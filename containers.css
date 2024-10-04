@@ -1,0 +1,33 @@
+.container1 {
+    padding: 0.6em 0.3em;
+    border: 1px solid #d0d0d0;
+    border-radius: 0.3em;
+    outline: none;
+    margin: 10px;
+    background-color: white;
+    display: grid;
+    grid-template-rows: auto 1em auto;
+    grid-template-columns: auto 1em auto;
+    height: auto;
+    grid-template-areas:
+        "a1 . b1"
+        "a1 . ."
+        "a1 . c1";
+    font-family: system-ui;
+}
+
+.a1 {
+    grid-area: a1;
+}
+
+.b1 {
+    font-weight: 600;
+    font-size: 20px;
+    grid-area: b1;
+}
+
+.c1 {
+    font-weight: 200;
+    font-size: 17px;
+    grid-area: c1;
+}
