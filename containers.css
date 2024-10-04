@@ -1,3 +1,43 @@
+.about{
+    max-width: 100%;
+    height: auto;
+    padding: 0.6em 0.3em;
+    border: 1px solid #d0d0d0;
+    border-radius: 0.3em;
+    outline: none;
+    margin: 10px;
+    background-color: white;
+    display: grid;
+    grid-template-areas: 
+    "tt"
+    "info"
+    "cont1";
+    grid-template-rows: auto;
+}
+
+.qualities{
+    grid-area: cont1;
+    display: flex;
+}
+
+.tt{
+    grid-area: tt;
+    margin: 1em 2em;
+    text-align: center;
+    font-weight: 400;
+    font-size: 48px;
+    font-family: system-ui;
+}
+
+.info{
+    margin: 1em 1em;
+    grid-area: info;
+    text-align: center;
+    font-weight: 300;
+    font-size: 32px;
+    font-family: system-ui;
+}
+
 .container1 {
     padding: 0.6em 0.3em;
     border: 1px solid #d0d0d0;
@@ -6,28 +46,30 @@
     margin: 10px;
     background-color: white;
     display: grid;
-    grid-template-rows: auto 1em auto;
-    grid-template-columns: auto 1em auto;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    grid-gap: 1em;
     height: auto;
     grid-template-areas:
-        "a1 . b1"
-        "a1 . ."
-        "a1 . c1";
+        "a1 b1"
+        "a1 c1";
     font-family: system-ui;
 }
 
 .a1 {
     grid-area: a1;
+    max-width: 100%;
 }
 
 .b1 {
-    font-weight: 600;
-    font-size: 20px;
+    height: auto;
+    font-weight: 700;
+    font-size: 32px;
     grid-area: b1;
 }
 
 .c1 {
-    font-weight: 200;
-    font-size: 17px;
+    font-weight: 400;
+    font-size: 24px;
     grid-area: c1;
 }
