@@ -1,0 +1,124 @@
+.logo a {
+    color: #000000;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.logo a:hover {
+    transform: scale(1.05);
+}
+
+.login {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.login-form {
+    position: absolute;
+    width: 600px;
+    height: 720px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(217, 217, 217, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 54px;
+    color: #000000;
+    margin-bottom: 60px;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#loginForm input {
+    width: 480px;
+    height: 60px;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    margin-bottom: 27px;
+    padding: 0 16px;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #5B5B5B;
+}
+
+#loginForm button {
+    width: 480px;
+    height: 60px;
+    margin-top: 84px;
+    background: #636363;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 30px;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 20px;
+    color: #FFFFFF;
+    transition: transform 0.3s ease-in-out;
+}
+
+#loginForm button:hover {
+    transform: scale(1.05);
+}
+
+.or {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #5B5B5B;
+    margin-top: 30px;
+}
+
+.signup {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #5B5B5B;
+    margin-top: 30px;
+}
+
+.signup a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
