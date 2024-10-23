@@ -1,0 +1,143 @@
+.logo a {
+    color: #000000;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.logo a:hover {
+    transform: scale(1.05);
+}
+
+.signup {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.signup-form {
+    position: absolute;
+    width: 600px;
+    height: 720px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(217, 217, 217, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 54px;
+    color: #000000;
+    margin-bottom: 46px;
+}
+
+.logo a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+#signupForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#signupForm input {
+    width: 480px;
+    height: 60px;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    margin-bottom: 25px;
+    padding: 0 16px;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #5B5B5B;
+}
+
+#signupForm input::placeholder {
+    color: #5B5B5B;
+}
+
+#signupForm button {
+    width: 480px;
+    height: 60px;
+    background: #636363;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 30px;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 20px;
+    color: #FAFAFA;
+    cursor: pointer;
+    margin-top: 22px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+#signupForm button:hover {
+    transform: scale(1.05);
+}
+
+.or {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #5B5B5B;
+    margin-top: 28px;
+    margin-bottom: 10px;
+}
+
+.login {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #5B5B5B;
+    margin-top: 4px;
+}
+
+.login a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}

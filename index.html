@@ -1,15 +1,239 @@
-<!doctype html>
+====
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-  >
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Elitewheels</title>
-</head>
-<body>
-content
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite Wheels</title>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
+  </head>
+  <body>
+    <div class="wrapper">
+    <header class="header">
+      <div class="container">
+        <nav>
+          <a href="#" class="logo" id="headerLogo">
+            <img src="assets/img/logo.png" alt="Elite Wheels Logo" class="logo-white" id="logoWhite">
+            <img src="assets/img/logo_dark.png" alt="Elite Wheels Logo" class="logo-black" id="logoBlack" style="display: none;">
+          </a>
+          <ul class="navigation">
+            <li><a href="#" id="navMakes">Makes</a></li>
+            <li><a href="#" id="navTypes">Types</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="#" class="search-btn" id="headerSearchBtn" style="display: none;">
+            <img src="assets/img/search.png" alt="Search" />
+          </a>
+          <a href="catalog.html" class="rent-now-btn" id="headerRentNowBtn">Rent now</a>
+          <a href="#" class="account-btn" id="headerAccountBtn">
+            <img src="assets/img/account_icon.png" alt="Account" class="account-white" id="accountWhite">
+            <img src="assets/img/account_icondark.png" alt="Account" class="account-black" id="accountBlack" style="display: none;">
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1>ELITE WHEELS</h1>
+        <div class="hero-line"></div>
+        <p>CAR RENTAL KYIV</p>
+        <form class="search-form" id="heroSearchForm">
+          <input type="text" placeholder="Search" id="heroSearchInput" />
+        </form>
+      </div>
+    </section>
+
+    <main>
+      <section class="intro">
+        <div class="container">
+          <h2>DRIVE THE DREAM, LIVE THE LUXURY</h2>
+          <p>Welcome to Elite Wheels, where your journey into the world of automotive luxury begins. We specialize in offering an exclusive range of high-end vehicles, providing our clients with an unparalleled driving experience. Our fleet includes the finest cars from globally renowned brands such as Ferrari, Lamborghini, Bentley, Rolls-Royce, and many more. Whether you're seeking the thrill of a powerful sports car or the elegance of a luxury sedan, we have the perfect vehicle to meet your desires.</p>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="container">
+          <div class="feature-list">
+            <div class="feature-item">
+              <img src="assets/img/exclusivity_icon.png" alt="Exclusivity">
+              <div class="feature-text">
+                <h3>Exclusivity</h3>
+                <p>We offer a curated selection of high-end vehicles from prestigious brands, providing clients with access to a level of luxury and performance not commonly available.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <img src="assets/img/service_icon.png" alt="Service">
+              <div class="feature-text">
+                <h3>Service</h3>
+                <p>Tailored customer experiences, including flexible rental terms, personalized delivery, and attention to every detail, customer satisfaction is our number one priority.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <img src="assets/img/quality_icon.png" alt="Quality">
+              <div class="feature-text">
+                <h3>Quality</h3>
+                <p>Every vehicle is meticulously maintained to ensure top performance, safety, and style, ensuring clients experience the highest standard of driving luxury.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="browse">
+        <div class="container">
+          <h2 class="browses">Browse by make</h2>
+          <div class="make-list">
+            <a href="#" class="make-item" id="makeBentley"><img src="assets/img/bentley.png" alt="Bentley"></a>
+            <a href="#" class="make-item" id="makeRollsRoyce"><img src="assets/img/rolls-royce.png" alt="Rolls-Royce"></a>
+            <a href="#" class="make-item" id="makePorsche"><img src="assets/img/porsche.png" alt="Porsche"></a>
+            <a href="#" class="make-item" id="makeLamborghini"><img src="assets/img/lamborghini.png" alt="Lamborghini"></a>
+            <a href="#" class="make-item" id="makeFerrari"><img src="assets/img/ferrari.png" alt="Ferrari"></a>
+          </div>
+          
+          <h2 class="browses">Browse by type</h2>
+          <div class="type-list">
+            <a href="#" class="type-item" id="typeSports">
+              <img src="assets/img/sports_car.png" alt="Sports">
+              <p>Sports</p>
+            </a>
+            <a href="#" class="type-item" id="typeSUV">
+              <img src="assets/img/suv_car.png" alt="SUV">
+              <p>SUV</p>
+            </a>
+            <a href="#" class="type-item" id="typeConvertible">
+              <img src="assets/img/convertible_car.png" alt="Convertible">
+              <p>Convertible</p>
+            </a>
+            <a href="#" class="type-item" id="typeSupercar">
+              <img src="assets/img/supercar_car.png" alt="Supercar">
+              <p>Supercar</p>
+            </a>
+            <a href="#" class="type-item" id="typeChauffeur">
+              <img src="assets/img/chauffeur_car.png" alt="Chauffeur">
+              <p>Chauffeur</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="trending">
+        <div class="container">
+          <h2>Trending</h2>
+          <div class="trending-grid">
+            <a href="#" class="trending-item" id="trendingMercedes">
+              <img src="assets/img/mercedes_trending.png" alt="Mercedes-Benz AMG SL 63">
+              <div class="trending-info">
+                <h3>Mercedes-Benz</h3>
+                <p>AMG SL 63, SUV, 2022</p>
+                <span class="price">1000$/day</span>
+              </div>
+            </a>
+            <a href="#" class="trending-item" id="trendingBentley">
+              <img src="assets/img/bentley_trending.png" alt="Bentley Continental GTC">
+              <div class="trending-info">
+                <h3>Bentley</h3>
+                <p>Continental GTC, Convertible, 2024</p>
+                <span class="price">1000$/day</span>
+              </div>
+            </a>
+            <a href="#" class="trending-item" id="trendingFerrari">
+              <img src="assets/img/ferrari_trending.png" alt="Ferrari Enzo">
+              <div class="trending-info">
+                <h3>Ferrari</h3>
+                <p>Enzo, Sports, 2017</p>
+                <span class="price">1000$/day</span>
+              </div>
+            </a>
+            <a href="#" class="trending-item" id="trendingPorsche1">
+              <img src="assets/img/porsche_trending.png" alt="Porsche 997 Turbo">
+              <div class="trending-info">
+                <h3>Porsche</h3>
+                <p>997 Turbo, Convertible, 2009</p>
+                <span class="price">1000$/day</span>
+              </div>
+            </a>
+            <a href="#" class="trending-item" id="trendingPorsche2">
+              <img src="assets/img/porsche2_trending.png" alt="Porsche 718 Cayman S">
+              <div class="trending-info">
+                <h3>Porsche</h3>
+                <p>718 Cayman S, Convertible, 2005</p>
+                <span class="price">1000$/day</span>
+              </div>
+            </a>
+            <a href="#" class="trending-item" id="trendingBentley2">
+              <img src="assets/img/bentley2_trending.png" alt="Bentley Continental GT V8">
+              <div class="trending-info">
+                <h3>Bentley</h3>
+                <p>Continental GT V8, Convertible, 2022</p>
+                <span class="price">1000$/day</span>
+              </div>
+            </a>
+            <a href="#" class="trending-item" id="trendingPorsche3">
+              <img src="assets/img/porsche3_trending.png" alt="Porsche 992 Stinger GTR">
+              <div class="trending-info">
+                <h3>Porsche</h3>
+                <p>992 Stinger GTR, Sports, 2018</p>
+                <span class="price">1000$/day</span>
+              </div>
+            </a>
+            <a href="#" class="trending-item" id="trendingMercedes2">
+              <img src="assets/img/mercedes2_trending.png" alt="Mercedes-Maybach S680 V12">
+              <div class="trending-info">
+                <h3>Mercedes-Maybach</h3>
+                <p>S680 V12, Supercar, 2022</p>
+                <span class="price">1000$/day</span>
+              </div>
+            </a>
+          </div>
+          <a href="catalog.html" class="see-more-btn" id="seeMoreBtn">See more</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="contacts">
+            <h3>Contacts</h3>
+            <div class="contact-item" id="contactPhone">
+              <img src="assets/img/phone_icon.png" alt="Phone">
+              <p>+380 (00) 000 00 00</p>
+            </div>
+            <div class="contact-item" id="contactEmail">
+              <img src="assets/img/mail_icon.png" alt="Email">
+              <p>elitewheels@gmail.com</p>
+            </div>
+            <div class="contact-item" id="contactAddress">
+              <img src="assets/img/address_icon.png" alt="Address">
+              <p>address</p>
+            </div>
+            <div class="social-icons">
+              <a href="#" id="socialInstagram"><img src="assets/img/instagram.png" alt="Instagram"></a>
+              <a href="#" id="socialFacebook"><img src="assets/img/facebook.png" alt="Facebook"></a>
+              <a href="#" id="socialMessenger"><img src="assets/img/messenger.png" alt="Messenger"></a>
+              <a href="#" id="socialYouTube"><img src="assets/img/youtube.png" alt="YouTube"></a>
+            </div>
+          </div>
+          <div class="contact-form">
+            <h3>Get in touch with us</h3>
+            <form id="footerContactForm">
+              <input type="text" name="name" placeholder="Name" required id="contactName">
+              <input type="email" name="email" placeholder="Email" required id="contactEmail">
+              <input type="tel" name="phone" placeholder="Phone number" required id="contactPhone">
+              <button type="submit" id="contactSubmit">Send</button>
+            </form>
+          </div>
+        </div>
+        <p class="copyright">© 2024 EliteWheels company. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
+>>>>>>> websiteLayout
