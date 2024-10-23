@@ -161,19 +161,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const minPriceInput = document.getElementById('minPriceInput');
     const maxPriceInput = document.getElementById('maxPriceInput');
 
-    function updateInputs() {
+    function updateSliders() {
+        if (parseInt(minPrice.value) > parseInt(maxPrice.value)) {
+            if (this === minPrice) {
+                maxPrice.value = minPrice.value;
+            } else {
+                minPrice.value = maxPrice.value;
+            }
+        }
         minPriceInput.value = minPrice.value;
         maxPriceInput.value = maxPrice.value;
     }
 
-    minPrice.addEventListener('input', updateInputs);
-    maxPrice.addEventListener('input', updateInputs);
+    minPrice.addEventListener('input', updateSliders);
+    maxPrice.addEventListener('input', updateSliders);
 
     minPriceInput.addEventListener('change', function() {
         minPrice.value = this.value;
+        updateSliders.call(minPrice);
     });
 
     maxPriceInput.addEventListener('change', function() {
         maxPrice.value = this.value;
+        updateSliders.call(maxPrice);
     });
 });
+
+const isItemPage = document.querySelector('.item-content');
+
+if (isItemPage) {
+    let lastScrollTop = 0;
+    
+    window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 100) {
+            if (scrollPosition > lastScrollTop) {
+                header.style.transform = "translateY(-100%)";
+            } else {
+                header.style.transform = "translateY(0)";
+            }
+        } else {
+            header.style.transform = "translateY(0)";
+        }
+        
+        lastScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
+    }, { passive: true });
+}

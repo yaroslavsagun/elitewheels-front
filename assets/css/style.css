@@ -513,7 +513,7 @@ body {
 
 .footer {
     position: relative;
-    width: 1920px;
+    width: 100%;
     height: 660px;
     background: rgba(217, 217, 217, 0.7);
 }
@@ -632,7 +632,7 @@ body {
 }
 
 .copyright {
-    position: absolute;
+    position: flex;
     left: 6.98%;
     bottom: 13.67%;
     font-family: 'Inter', sans-serif;
