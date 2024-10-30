@@ -208,3 +208,16 @@ if (isItemPage) {
         lastScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
     }, { passive: true });
 }
+
+function menuClick() {
+    let menuContent = document.getElementById('filterMenu')
+    let button = document.getElementById('filtersShow')
+    if (menuContent.style.display === 'block') {
+        menuContent.style.display = 'none';
+        button.style.color = "#FFFFFF";
+    } else {
+        menuContent.style.display = 'block';
+        button.style.color = "#6667AB";
+    }
+}
+

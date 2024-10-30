@@ -26,7 +26,7 @@
           <a href="#" class="search-btn" id="headerSearchBtn">
             <img src="assets/img/search.png" alt="Search" />
           </a>
-          <a href="catalog.html" class="rent-now-btn" id="headerRentNowBtn" style="background-color: #000000; color: #ffffff;">Rent now</a>
+          <button class="filter-btn" id="filtersShow" onclick="menuClick()" style="background-color: #000000; color: #ffffff;">Filters</button>
           <a href="#" class="account-btn" id="headerAccountBtn">
             <img src="assets/img/account_icondark.png" alt="Account" class="account-black" id="accountBlack" style="display: flex;">
           </a>
@@ -35,8 +35,7 @@
     </header>
 
     <div class="catalog">
-        <aside class="filters">
-            <h2>Filters</h2>
+        <aside class="filters" id="filterMenu">
             <div class="filter-group">
                 <h3>Make</h3>
                 <select>
@@ -86,7 +85,6 @@
             </div>
         </aside>
 
-        <div class="line"></div>
 
         <div class="catalog-content">
             <main class="cars-grid">

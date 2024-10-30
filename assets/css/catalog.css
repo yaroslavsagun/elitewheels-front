@@ -6,19 +6,29 @@
 
 .catalog {
     position: relative;
-    max-width: 1920px;
-    height: 2215px;
-    background: #FFFFFF;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+
 .filters {
-    position: absolute;
-    width: 493px;
-    left: 0px;
-    top: 150px;
-    height: 700px;
+    z-index: 1;
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    margin-top: 50px;
     background: #FFFFFF;
-    padding: 83px 0 0 90px;
+    overflow-y: auto;
+    padding: 100px 20px 50px 20px;
+}
+
+@media (max-width: 1200px) {
+    .filters {
+        padding-top: 150px;
+    width: 100%;
+    display: none;
+}
 }
 
 .filters h2 {
@@ -157,7 +167,7 @@
     padding: 0 20px;
     font-family: 'Nunito', sans-serif;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 25px;
     line-height: 20px;
     color: #676767;
 }
@@ -194,21 +204,28 @@
 }
 
 .catalog-content {
-    position: absolute;
-    left: 558px;
-    top: 240px;
-    width: 1260px;
+    position: relative;
+    margin: 20px auto;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+    .catalog-content {
+        padding: 0;
+    }
 }
 
 .cars-grid {
     display: grid;
-    grid-template-columns: repeat(2, 581.54px);
-    gap: 97px 96.92px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 150px;
 }
 
 .car-card {
     position: relative;
-    width: 581.54px;
     height: 358.24px;
     background: #FAFAFA;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -227,7 +244,7 @@
 .car-info {
     position: absolute;
     width: 100%;
-    height: 65.68px;
+    height: 25%;
     left: 0;
     bottom: 0;
     background: #D3D3D3;
@@ -252,12 +269,20 @@
     height: 28.15px;
     left: 43.62px;
     top: 31.56px;
+    width: 55%;
     font-family: 'Nunito', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 25px;
     color: #000000;
+}
+
+@media (max-width: 900px) {
+    .car-info p {
+        width: 50%;
+        font-size: 15px;
+    }
 }
 
 .car-info .price {
@@ -383,4 +408,21 @@
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.filter-btn {
+    display: inline-block;
+    width: 210px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
 }

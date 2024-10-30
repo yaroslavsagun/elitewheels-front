@@ -154,6 +154,12 @@ body {
     height: 150px;
 }
 
+@media (max-width: 900px) {
+    .header.scrolled .container {
+        height: 200px;
+    }
+}
+
 .header.scrolled .navigation a {
     color: #000000;
 }
@@ -180,8 +186,8 @@ body {
 .hero {
     position: relative;
     width: 100%;
-    height: 420px;
-    padding: 450px;
+    min-height: 420px;
+    padding: 100px 20px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('../img/background.jpg');
     background-size: cover;
     background-position: center;
@@ -189,6 +195,14 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 900px) {
+    .hero {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('../img/background_mobile.jpg');
+        padding: 80px 15px;
+    }
+}
+
 
 .hero-content {
     display: flex;
@@ -231,6 +245,12 @@ body {
     display: flex;
     justify-content: center;
     transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .search-form {
+        margin-top: 80px;
+    }
 }
 
 .search-form:hover {
@@ -326,6 +346,20 @@ body {
     text-align: justify;
 }
 
+@media (max-width: 900px) {
+    .feature-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .feature-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+
 .browse .container {
     max-width: 1600px;
     padding-top: 62px;
@@ -395,15 +429,17 @@ body {
     right: 0;
 }
 
+/* Base styles */
 .trending {
     position: relative;
-    width: 1600px;
+    width: 100%;
+    max-width: 100%; /* limits the container's width on large screens */
     margin: 0 auto;
+    padding: 0 20px; /* adds padding for smaller screens */
 }
 
 .trending h2 {
     font-family: 'Nunito', sans-serif;
-    font-style: normal;
     font-weight: 700;
     font-size: 34px;
     line-height: 46px;
@@ -413,82 +449,111 @@ body {
     margin-bottom: 35px;
 }
 
+/* Responsive grid container */
 .trending-grid {
     display: grid;
-    grid-template-columns: repeat(2, 720px);
-    gap: 120px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
     margin-top: 15px;
 }
 
+/* Individual trending item styling */
 .trending-item {
     position: relative;
-    width: 720px;
-    height: 420px;
     background: #FAFAFA;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
 }
+
 .trending-item:hover {
     transform: scale(1.05);
 }
 
 .trending-item img {
-    position: absolute;
-    width: 660px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -65%);
-    object-fit: cover;
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
 }
 
 .trending-info {
     position: absolute;
-    width: 720px;
-    height: 77px;
-    left: 0;
+    width: 100%;
+    height: auto;
     bottom: 0;
     background: #D3D3D3;
-    border-radius: 0px 0px 30px 30px;
-    padding: 7px 54px;
+    border-radius: 0 0 30px 30px;
+    padding: 10px 20px;
     box-sizing: border-box;
 }
 
 .trending-info h3 {
     font-family: 'Nunito', sans-serif;
-    font-style: normal;
     font-weight: 700;
-    font-size: 30px;
-    line-height: 41px;
+    font-size: 24px;
+    line-height: 32px;
     color: #000000;
     margin: 0;
 }
 
 .trending-info p {
     font-family: 'Nunito', sans-serif;
-    font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 33px;
+    font-size: 18px;
+    line-height: 28px;
+    max-width: 60%;
     color: #000000;
-    margin: -10px 0;
+    margin: 5px 0;
 }
-
 
 .trending-info .price {
     position: absolute;
-    right: 30px;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     font-family: 'Nunito', sans-serif;
-    font-style: normal;
     font-weight: 700;
-    font-size: 30px;
-    line-height: 41px;
+    font-size: 24px;
+    line-height: 32px;
     color: #000000;
 }
+
+@media (min-width: 768px) {
+    .trending h2 {
+        font-size: 28px;
+    }
+    .trending-info h3 {
+        font-size: 24px;
+    }
+    .trending-info p {
+        font-size: 20px;
+    }
+    .trending-info .price {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .trending h2 {
+        font-size: 34px;
+    }
+    .trending-grid {
+        gap: 40px;
+    }
+    .trending-item {
+        height: 420px;
+    }
+    .trending-info h3 {
+        font-size: 30px;
+    }
+    .trending-info p {
+        font-size: 24px;
+    }
+    .trending-info .price {
+        font-size: 30px;
+    }
+}
+
 
 .see-more-btn {
     display: block;
@@ -514,20 +579,18 @@ body {
 .footer {
     position: relative;
     width: 100%;
-    height: 660px;
+    min-height: 660px;
     background: rgba(217, 217, 217, 0.7);
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
-    max-width: 1680px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .contacts {
-    width: 466px;
-    height: 315px;
+    width: 100%;
     position: relative;
     margin-top: 125px;
 }
@@ -573,7 +636,13 @@ body {
 }
 
 .contact-form {
-    width: 528px;
+    width: 50%;
+}
+
+@media (max-width: 800px) {
+    .contact-form {
+        width: auto;
+    }
 }
 
 .contact-form h3 {
@@ -621,10 +690,15 @@ body {
     font-weight: 600;
     color: #000000;
     cursor: pointer;
-    align-self: flex-end;
+    align-self: center;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     margin-top: 25px;
     transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 900px) {
+    width: 130px;
+    height: 45px;
 }
 
 .contact-form button:hover {
@@ -632,13 +706,12 @@ body {
 }
 
 .copyright {
-    position: flex;
-    left: 6.98%;
-    bottom: 13.67%;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
+    text-align: center;
     font-weight: 300;
     line-height: 19px;
+    margin: 20px;
     color: #000000;
 }
 
@@ -654,18 +727,9 @@ body {
     .trending {
         padding: 0 20px;
     }
-    
-    .trending-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
 
     .trending-item {
         margin: 0 auto;
-    }
-
-    .footer-content {
-        padding: 0 20px;
     }
 }
 
@@ -685,16 +749,7 @@ body {
     .search-form input {
         width: 600px;
     }
-    
-    .trending-item {
-        width: 640px;
-        height: 380px;
-    }
-    
-    .trending-item img {
-        width: 580px;
-        height: 290px;
-    }
+
 }
 
 
@@ -702,45 +757,44 @@ body {
     .container {
         padding: 0 30px;
     }
-    
+
     .hero h1 {
         font-size: 64px;
     }
-    
+
     .hero p {
         font-size: 28px;
-        width: 80%;
+        text-align: center;
     }
-    
+
     .search-form input {
         width: 500px;
     }
-    
+
     .feature-list {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .feature-item {
         width: 100%;
         max-width: 600px;
         margin-bottom: 40px;
     }
-    
+
     .make-list, .type-list {
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+
     .trending-table td {
         display: block;
         width: 100%;
     }
-    
+
     .trending-item {
         width: 100%;
-        max-width: 640px;
-        margin: 0 auto 60px;
+        height: 450px;
     }
 }
 
@@ -748,71 +802,91 @@ body {
     body {
         font-size: 24px;
     }
-    
+
     .header .container {
         flex-direction: column;
+        max-width: 100%;
         height: auto;
         padding: 20px 0;
     }
-    
+
     .navigation {
         margin-top: 20px;
     }
-    
+
     .header-actions {
         margin-top: 20px;
     }
-    
+
     .hero h1 {
         font-size: 48px;
     }
-    
+
     .hero p {
         font-size: 24px;
     }
-    
+
     .search-form input {
-        width: 100%;
+        width: 400px;
     }
-    
+
     .intro h2 {
         font-size: 36px;
     }
-    
+
     .intro p {
         font-size: 24px;
     }
-    
+
     .feature-item h3 {
         font-size: 28px;
     }
-    
+
     .feature-item p {
-        font-size: 20px;
+        font-size: 17px;
+        text-align: center;
     }
-    
+
+    .trending-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .trending-item {
+        width: 100%;
+        height: 300px;
+    }
+
     .trending-info h3 {
         font-size: 24px;
     }
-    
+
     .trending-info p {
-        font-size: 20px;
+        font-size: 17px;
+        max-width: 55%;
     }
-    
+
     .see-more-btn {
         width: 100%;
         max-width: 400px;
     }
-    
+
     .footer-content {
         flex-direction: column;
     }
-    
+
     .contact-form {
-        margin-top: 60px;
+        margin-top: 90px;
+        text-align: center;
     }
-    
+
+    .contact-field {
+        text-align: center;
+        max-width: 100%;
+    }
+
     .contact-form input, .contact-form button {
         width: 100%;
     }
+
+
 }
