@@ -26,7 +26,7 @@
           <a href="#" class="search-btn" id="headerSearchBtn">
             <img src="assets/img/search.png" alt="Search" />
           </a>
-          <a href="catalog.html" class="rent-now-btn" id="headerRentNowBtn" style="background-color: #000000; color: #ffffff;">Rent now</a>
+          <a href="#" class="rent-now-btn" id="headerRentNowBtn" style="background-color: #000000; color: #ffffff;">Rent now</a>
           <a href="#" class="account-btn" id="headerAccountBtn">
             <img src="assets/img/account_icondark.png" alt="Account" class="account-black" id="accountBlack" style="display: flex;">
           </a>
@@ -39,7 +39,8 @@
             <h2>Filters</h2>
             <div class="filter-group">
                 <h3>Make</h3>
-                <select>
+                <select id="brand-select">
+                    <option>Any</option>
                     <option>Ferrari</option>
                     <option>Lamborghini</option>
                     <option>Porsche</option>
@@ -51,20 +52,20 @@
             <div class="filter-group type">
                 <h3>Type</h3>
                 <div class="type-options">
-                    <button class="sports-button">Sports</button>
-                    <button class="suv-button">SUV</button>
-                    <button class="supercar-button">Supercar</button>
-                    <button class="convertible-button">Convertible</button>
-                    <button class="sedan-button">Sedan</button>
-                    <button class="ev-button">EV</button>
-                    <button class="chauffeur-button">Chauffeur</button>
-                    <button class="ultra-luxury-button">Ultra-Luxury</button>
+                    <button id="sports-button">Sports</button>
+                    <button id="suv-button">SUV</button>
+                    <button id="supercar-button">Supercar</button>
+                    <button id="convertible-button">Convertible</button>
+                    <button id="sedan-button">Sedan</button>
+                    <button id="ev-button">EV</button>
+                    <button id="chauffeur-button">Chauffeur</button>
+                    <button id="ultra-luxury-button">Ultra-Luxury</button>
                 </div>
             </div>
             <div class="filter-group">
                 <h3>Price range</h3>
-                  <input class="inputMinPrice slider" type="range" min="0" max="10000" step="100" id="minPrice">
-                  <input class="inputMaxPrice slider" type="range" min="0" max="10000" step="100" id="maxPrice">
+                  <input class="inputMinPrice slider" type="range" min="0" max="10000" value="0" step="10" id="minPrice">
+                  <input class="inputMaxPrice slider" type="range" min="0" max="10000" value="10000" step="10" id="maxPrice">
                 <div class="price-inputs">
                     <input type="number" id="minPriceInput" placeholder="Min">
                     <div class="price-separator"></div>
@@ -84,6 +85,7 @@
                     <button style="background-color: #084712;"></button>
                 </div>
             </div>
+            <button id="search-btn" class="search-btn">Search</button>
         </aside>
 
         <div class="line"></div>
@@ -200,5 +202,6 @@
 
     </div>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/catalog.js"></script>
 </body>
 </html>

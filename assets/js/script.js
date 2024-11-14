@@ -1,4 +1,5 @@
 const header = document.querySelector(".header");
+const footer = document.querySelector(".footer");
 const searchBtn = document.querySelector(".search-btn");
 const logoWhite = document.querySelector(".logo-white");
 const logoBlack = document.querySelector(".logo-black");
@@ -63,6 +64,7 @@ window.addEventListener("scroll", () => {
 document.addEventListener('DOMContentLoaded', function() {
     const seeMoreBtn = document.querySelector('.see-more-btn');
     const rentNowBtn = document.querySelector('.rent-now-btn');
+    const logoBtn = document.getElementById('headerLogo');
     const accountBtn = document.getElementById('headerAccountBtn');
     const signupLink = document.getElementById('signupLink');
 
@@ -74,25 +76,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500);
     }
 
+    if (logoBtn) {
+        logoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            location.href = '/';
+        });
+    }
+
     if (seeMoreBtn) {
-        seeMoreBtn.addEventListener('click', smoothTransition);
+        seeMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            location.href = '/catalog';
+        });
     }
 
     if (rentNowBtn) {
-        rentNowBtn.addEventListener('click', smoothTransition);
+        rentNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            location.href = '/catalog';
+        });
     }
 
     if (accountBtn) {
         accountBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = 'login.html';
+            location.href = '/login';
         });
     }
 
     if (signupLink) {
         signupLink.addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = 'signup.html';
+            location.href = '/signup';
         });
     }
 
@@ -100,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (homeLink) {
         homeLink.addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = 'index.html';
+            location.href = '/';
         });
     }
 
@@ -108,83 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginLink) {
         loginLink.addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = 'login.html';
+            location.href = '/login';
         });
     }
-
-    const signupForm = document.getElementById('signupForm');
-    if (signupForm) {
-        signupForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const fullName = document.getElementById('signupFullName').value.trim();
-            const email = document.getElementById('signupEmail').value.trim();
-            const phone = document.getElementById('signupPhone').value.trim();
-            const password = document.getElementById('signupPassword').value;
-
-            if (fullName === '') {
-                alert('Будь ласка, введіть ваше повне ім\'я');
-                return;
-            }
-
-            if (email === '' || !isValidEmail(email)) {
-                alert('Будь ласка, введіть коректну email адресу');
-                return;
-            }
-
-            if (phone === '' || !isValidPhone(phone)) {
-                alert('Будь ласка, введіть коректний номер телефону');
-                return;
-            }
-
-            if (password.length < 6) {
-                alert('Пароль повинен містити щонайменше 6 символів');
-                return;
-            }
-
-            alert('Реєстрація успішна!');
-        });
-    }
-
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    function isValidPhone(phone) {
-        const phoneRegex = /^\+?[\d\s-]{10,}$/;
-        return phoneRegex.test(phone);
-    }
-
-    const minPrice = document.getElementById('minPrice');
-    const maxPrice = document.getElementById('maxPrice');
-    const minPriceInput = document.getElementById('minPriceInput');
-    const maxPriceInput = document.getElementById('maxPriceInput');
-
-    function updateSliders() {
-        if (parseInt(minPrice.value) > parseInt(maxPrice.value)) {
-            if (this === minPrice) {
-                maxPrice.value = minPrice.value;
-            } else {
-                minPrice.value = maxPrice.value;
-            }
-        }
-        minPriceInput.value = minPrice.value;
-        maxPriceInput.value = maxPrice.value;
-    }
-
-    minPrice.addEventListener('input', updateSliders);
-    maxPrice.addEventListener('input', updateSliders);
-
-    minPriceInput.addEventListener('change', function() {
-        minPrice.value = this.value;
-        updateSliders.call(minPrice);
-    });
-
-    maxPriceInput.addEventListener('change', function() {
-        maxPrice.value = this.value;
-        updateSliders.call(maxPrice);
-    });
 });
 
 const isItemPage = document.querySelector('.item-content');
