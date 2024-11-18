@@ -1,19 +1,28 @@
 const loginForm = document.getElementById('loginForm');
 
+import api_link from "./constants.js";
+
 async function login(email, password) {
     const data = {
         email: email,
         password: password
     }
-    const res = await fetch('/api/auth/login', {
+    const res = await fetch(api_link+'/login', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         },
         body: JSON.stringify(data)
     })
-    const access = await res.json();
-    return access;
+    const result = await res.json();
+    if (result.token) {
+        localStorage.setItem('token', result.token);
+        return true;
+    } else {
+        alert(result.message);
+        return false;
+    }
 }
 
 loginForm.addEventListener('submit', async function (e) {

@@ -1,21 +1,30 @@
 const signupForm = document.getElementById('signupForm');
 
+import api_link from "./constants.js";
+
 async function createUser(fullName, email, phone, password) {
     const data = {
-        fullName: fullName,
+        name: fullName,
         email: email,
         phone: phone,
         password: password
     }
-    const res = await fetch('/api/auth/register', {
-        method: 'PUT',
+    const res = await fetch(api_link+'/register', {
+        method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         },
         body: JSON.stringify(data)
     })
     const result = await res.json();
-    return result;
+    if (result.token) {
+        localStorage.setItem('token', result.token);
+        return true;
+    } else {
+        alert(result.message);
+        return false;
+    }
 }
 
 signupForm.addEventListener('submit', async function (e) {
@@ -46,9 +55,7 @@ signupForm.addEventListener('submit', async function (e) {
         return;
     }
 
-    alert('Реєстрація успішна!');
     let result = await createUser(fullName, email, phone, password);
-    console.log(result);
     if (result) {
         location.href = '/';
     } else {

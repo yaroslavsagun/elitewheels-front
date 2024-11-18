@@ -1,12 +1,10 @@
-import express from 'express';
+import express, { Router } from 'express';
 import path from 'path';
-import router from './assets/js/routes/servers.js';
-
 
 const app = express();
 const __dirname = path.resolve();
 const PORT = 3000;
-
+const router = Router();
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'index.html'));

@@ -1,25 +1,29 @@
+import api_link from "./constants.js";
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     const type_buttons = document.querySelectorAll(".type-options button");
     let type_array = [];
 
     for (var i = 0; i < type_buttons.length; i++) {
-        type_buttons[i].addEventListener('click', function(){
-            if (type_array.includes(this.textContent.toLowerCase())) {
-                let index = type_array.indexOf(this.textContent.toLowerCase());
+        type_buttons[i].addEventListener('click', function () {
+            if (type_array.includes(this.textContent)) {
+                let index = type_array.indexOf(this.textContent);
                 type_array.splice(index, 1);
             } else {
-                type_array.push(this.textContent.toLowerCase());
+                type_array.push(this.textContent);
             }
             this.classList.toggle("active");
         })
     }
-    
+
     const color_buttons = document.querySelectorAll(".color-options button");
-    let = color_array = [];
+    let color_array = [];
 
     for (var i = 0; i < color_buttons.length; i++) {
-        color_buttons[i].addEventListener('click', function(){
+        color_buttons[i].addEventListener('click', function () {
             let color = getColor(this.style.backgroundColor);
             if (color_array.includes(color)) {
                 let index = color_array.indexOf(color);
@@ -67,36 +71,87 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchBtn = document.getElementById("search-btn");
     const brand_select = document.getElementById("brand-select");
 
-    searchBtn.addEventListener('click', function() {
+    searchBtn.addEventListener('click', async function () {
 
-        let brand = brand_select.options[brand_select.selectedIndex].text.toLowerCase();
+        let brand = brand_select.options[brand_select.selectedIndex].text;
+        let brand_id = (brand != "Any" ? await getBrandId(brand) : null);
+
+        let type_ids = (type_array != [] ? await getTypeIds(type_array) : null);
+
         let price = [maxPrice.value, minPrice.value];
-        console.log(brand);
-        console.log(color_array);
-        console.log(type_array);
-        console.log(price);
 
-        console.log(getCars(brand,type_array,price,color_array));
+        console.log(await getCars(brand_id, type_ids, price, color_array));
     });
 });
 
-async function getCars(brand, type_array, price, color) {
-    const res = await fetch(`/api/products?brand=${brand}&options=${type_array.join(",")}&price=${price.join(",")}&color=${color_array.join(",")}`, {
+async function getCars(brand, type_ids, price, color_array) {
+    let query = "/cars/?";
+    if (brand != null) {
+        query += `brand_ids[]=${brand}&`;
+    }
+    if (type_ids != null && type_ids.length != 0) {
+        query += `type_ids[]=${type_ids.join("&type_ids[]=")}&`;
+    }
+    if (color_array.length != 0) {
+        query += `colors[]=${color_array.join("&colors[]=")}&`;
+    }
+    query += `max_price=${price[0]}&min_price=${price[1]}`;
+
+    const res = await fetch(api_link + query, {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         }
     })
     const access = await res.json();
-    return access;
+    return access.data;
 }
 
+async function getBrandId(brand) {
+    const res = await fetch(api_link + `/brands`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+    const access = await res.json();
+    
+    for (let i = 0; i < access.data.length; i++) {
+        if (access.data[i].name == brand) {
+            return access.data[i].id;
+        }
+    }
+}
+
+async function getTypeIds(type_array) {
+    const res = await fetch(api_link + `/types`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+    const access = await res.json();
+
+    let ids = [];
+    for (let i = 0; i < type_array.length; i++) {
+        for (let j = 0; j < access.data.length; j++) {
+            if (access.data[j].name == type_array[i]) {
+                ids.push(access.data[j].id);
+                break;
+            }
+        }
+    }
+    return ids;
+}
 
 function getColor(color) {
     color = color.replace("rgb(", "").replace(")", "")
     color = color.replaceAll(" ", "");
     let color_array = color.split(",");
-    result = "#";
+    let result = "";
     for (let i = 0; i < 3; i++) {
         result += componentToHex(parseInt(color_array[i]));
     }
