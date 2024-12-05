@@ -37,17 +37,46 @@
     <div class="catalog">
         <aside class="filters">
             <h2>Filters</h2>
-            <div class="filter-group">
+            <div class="filter-group make">
                 <h3>Make</h3>
-                <select id="brand-select">
-                    <option>Any</option>
-                    <option>Ferrari</option>
-                    <option>Lamborghini</option>
-                    <option>Porsche</option>
-                    <option>Bentley</option>
-                    <option>Rolls-Royce</option>
-                    <option>Mercedes-Benz</option>
-                </select>
+                <input type="text" class="search-box" placeholder="Search manufacturer" id="manufacturer-search">
+                <div class="manufacturers-list">
+                    <div class="manufacturer-item">
+                         <input type="checkbox" id="manufacturer-All" value="All">
+                         <label for="manufacturer-All">All</label>
+                         <span class="manufacturer-count">(10)</span>
+                    </div>
+                    <div class="manufacturer-item">
+                        <input type="checkbox" id="manufacturer-ferrari" value="ferrari">
+                        <label for="manufacturer-ferrari">Ferrari</label>
+                        <span class="manufacturer-count">(2)</span>
+                    </div>
+                    <div class="manufacturer-item">
+                        <input type="checkbox" id="manufacturer-lamborghini" value="lamborghini">
+                        <label for="manufacturer-lamborghini">Lamborghini</label>
+                        <span class="manufacturer-count">(3)</span>
+                    </div>
+                    <div class="manufacturer-item">
+                        <input type="checkbox" id="manufacturer-porsche" value="porsche">
+                        <label for="manufacturer-porsche">Porsche</label>
+                        <span class="manufacturer-count">(2)</span>
+                    </div>
+                    <div class="manufacturer-item">
+                        <input type="checkbox" id="manufacturer-bentley" value="bentley">
+                        <label for="manufacturer-bentley">Bentley</label>
+                        <span class="manufacturer-count">(1)</span>
+                    </div>
+                    <div class="manufacturer-item">
+                        <input type="checkbox" id="manufacturer-rolls-royce" value="rolls-royce">
+                        <label for="manufacturer-rolls-royce">Rolls-Royce</label>
+                        <span class="manufacturer-count">(1)</span>
+                    </div>
+                    <div class="manufacturer-item">
+                        <input type="checkbox" id="manufacturer-mercedes" value="mercedes">
+                        <label for="manufacturer-mercedes">Mercedes-Benz</label>
+                        <span class="manufacturer-count">(1)</span>
+                    </div>
+                </div>
             </div>
             <div class="filter-group type">
                 <h3>Type</h3>
@@ -85,7 +114,7 @@
                     <button style="background-color: #084712;"></button>
                 </div>
             </div>
-            <button id="search-btn" class="search-btn">Search</button>
+            <button id="filter-search-btn" class="search-btn">Search</button>
         </aside>
 
         <div class="line"></div>

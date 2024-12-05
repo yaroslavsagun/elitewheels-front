@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Car - Elite Wheels</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/edit-car.css">
+    <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+              <nav>
+                <a href="#" class="logo" id="headerLogo">
+                  <img src="assets/img/logo_dark.png" alt="Elite Wheels Logo" class="logo-black" id="logoBlack" style="display: flex;">
+                </a>
+                <ul class="navigation">
+                  <li><a href="#" id="navMakes" style="color: #000000;">Makes</a></li>
+                  <li><a href="#" id="navTypes" style="color: #000000;">Types</a></li>
+                </ul>
+              </nav>
+              <div class="header-actions">
+                <a href="#" class="search-btn" id="headerSearchBtn">
+                  <img src="assets/img/search.png" alt="Search" />
+                </a>
+                <a href="#" class="rent-now-btn" id="headerRentNowBtn" style="background-color: #000000; color: #ffffff;">Rent now</a>
+                <a href="#" class="account-btn" id="headerAccountBtn">
+                  <img src="assets/img/profile_photo.png" alt="Account" class="account-black" id="accountBlack" style="display: flex;">
+                </a>
+              </div>
+            </div>
+        </header>
+        <main class="edit-car">
+            <div class="container">
+                <div class="car-form">
+                    <div class="left-section">
+                        <div class="main-photo">
+                            <input type="file" id="mainPhoto" accept="image/*">
+                            <label for="mainPhoto" class="upload-label">+</label>
+                        </div>
+                    </div>
+
+                    <div class="right-section">
+                        <div class="form-group">
+                            <label>Make</label>
+                            <input type="text" placeholder="Ferrari">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Model</label>
+                            <input type="text" placeholder="LaFerrari">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Year</label>
+                            <input type="text" placeholder="2000">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Type</label>
+                            <div class="type-options">
+                                <button id="sports-button">Sports</button>
+                    <button id="suv-button">SUV</button>
+                    <button id="supercar-button">Supercar</button>
+                    <button id="convertible-button">Convertible</button>
+                    <button id="sedan-button">Sedan</button>
+                    <button id="ev-button">EV</button>
+                    <button id="chauffeur-button">Chauffeur</button>
+                    <button id="ultra-luxury-button">Ultra-Luxury</button>
+                </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" placeholder="1000$">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Color</label>
+                            <div class="color-options">
+                                <button class="white"></button>
+                                <button class="black"></button>
+                                <button class="red"></button>
+                                <button class="gray"></button>
+                                <button class="gold"></button>
+                                <button class="brown"></button>
+                                <button class="navy"></button>
+                                <button class="green"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h3>About</h3>
+                    <textarea placeholder="Tell us a little about the car ......"></textarea>
+                </div>
+
+                <div class="features-section">
+                    <h3>Add special features</h3>
+                    <div class="features-grid">
+                        <div class="feature-input">
+                            <label>Engine</label>
+                            <input type="text" placeholder="Characteristic">
+                        </div>
+                        <div class="feature-input">
+                            <label>Time to 100km/h</label>
+                            <input type="text" placeholder="Characteristic">
+                        </div>
+                        <div class="feature-input">
+                            <label>Max speed</label>
+                            <input type="text" placeholder="Characteristic">
+                        </div>
+                        <div class="feature-input">
+                            <label>Max power</label>
+                            <input type="text" placeholder="Characteristic">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="submit-btn">Add</button>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="contacts">
+                        <h3>Contacts</h3>
+                        <div class="contact-item" id="contactPhone">
+                            <img src="assets/img/phone_icon.png" alt="Phone">
+                            <p>+380 (00) 000 00 00</p>
+                        </div>
+                        <div class="contact-item" id="contactEmail">
+                            <img src="assets/img/mail_icon.png" alt="Email">
+                            <p>elitewheels@gmail.com</p>
+                        </div>
+                        <div class="contact-item" id="contactAddress">
+                            <img src="assets/img/address_icon.png" alt="Address">
+                            <p>address</p>
+                        </div>
+                        <div class="social-icons">
+                            <a href="#" id="socialInstagram"><img src="assets/img/instagram.png" alt="Instagram"></a>
+                            <a href="#" id="socialFacebook"><img src="assets/img/facebook.png" alt="Facebook"></a>
+                            <a href="#" id="socialMessenger"><img src="assets/img/messenger.png" alt="Messenger"></a>
+                            <a href="#" id="socialYouTube"><img src="assets/img/youtube.png" alt="YouTube"></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Get in touch with us</h3>
+                        <form id="footerContactForm">
+                            <input type="text" name="name" placeholder="Name" required id="contactName">
+                            <input type="email" name="email" placeholder="Email" required id="contactEmail">
+                            <input type="tel" name="phone" placeholder="Phone number" required id="contactPhone">
+                            <button type="submit" id="contactSubmit">Send</button>
+                        </form>
+                    </div>
+                </div>
+                <p class="copyright">© 2024 EliteWheels company. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

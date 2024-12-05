@@ -1,0 +1,159 @@
+.header {
+    background: #FFFFFF;
+}
+
+.user-cars {
+    padding: 20px;
+}
+
+.car-list {
+    display: grid;
+    grid-template-columns: repeat(2, 720px);
+    gap: 120px;
+    padding: 40px;
+    margin-top: 15px;
+    margin-bottom: 120px;
+    justify-content: center;
+}
+
+.car-item {
+    width: 720px;
+    height: 420px;
+    background: #FAFAFA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.car-item:hover {
+    transform: scale(1.05);
+}
+
+.car-image {
+    width: 660px;
+    height: 330px;
+    margin: 6px auto;
+    display: block;
+}
+
+.car-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 77px;
+    background: #D3D3D3;
+    border-radius: 0px 0px 30px 30px;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.car-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.car-brand {
+    font-family: 'Nunito';
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 41px;
+    color: #000000;
+}
+
+.car-model {
+    font-family: 'Nunito';
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 33px;
+    margin-top: -10px;
+    color: #000000;
+}
+
+.car-actions {
+    display: flex;
+    gap: 15px;
+    margin-right: 20px;
+}
+
+.edit-btn, .delete-btn {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    transform: scale(1.1);
+}
+
+.edit-btn::before {
+    content: '';
+    position: absolute;
+    left: 12.5%;
+    right: 12.5%;
+    top: 12.5%;
+    bottom: 12.5%;
+    background: url('../img/edit_icon.png') no-repeat center;
+    background-size: contain;
+}
+
+.delete-btn::before {
+    content: '';
+    position: absolute;
+    left: 16.67%;
+    right: 16.67%;
+    top: 12.5%;
+    bottom: 12.5%;
+    background: url('../img/delete_icon.png') no-repeat center;
+    background-size: contain;
+}
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 233px 114px 0;
+}
+
+.page-title {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 46px;
+    letter-spacing: 0.04em;
+    color: #000000;
+}
+
+.add-car-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 50px;
+    background: #FAFAFA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.add-car-btn:hover {
+    transform: scale(1.05);
+}
+
+.add-car-btn img {
+    width: 21px;
+    height: 46px;
+}

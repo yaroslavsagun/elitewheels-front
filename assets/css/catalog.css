@@ -59,6 +59,10 @@
     color: #676767;
 }
 
+.price-inputs {
+    margin-top: 25px;
+}
+
 .type-options {
     display: flex;
     flex-wrap: wrap;
@@ -184,10 +188,32 @@
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+    position: relative;
+    transition: opacity 0.3s ease;
 }
 
 .color-options button.active {
-    border-radius: 10%;
+    opacity: 0.5;
+}
+
+.color-options button.active::before,
+.color-options button.active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 130%;
+    height: 2px;
+    background-color: #000000;
+    transform-origin: center;
+}
+
+.color-options button.active::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.color-options button.active::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .line {
@@ -222,6 +248,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
 .car-card img {
@@ -283,22 +310,30 @@
     text-align: right;
 }
 
-.more-btn {
-    width: 240px;
+#filter-search-btn {
+    width: 400px;
     height: 60px;
     margin: 90px auto;
     display: block;
-    background: rgba(135, 135, 135, 0.64);
+    background-color: #000000;
+    color: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     font-family: 'Raleway', sans-serif;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 32px;
     line-height: 38px;
-    color: #FFFFFF;
     border: none;
     cursor: pointer;
-    margin-bottom: 125px;
+    transition: transform 0.3s ease;
+}
+
+#filter-search-btn:hover {
+    transform: scale(1.05);
+}
+
+.car-card:hover {
+    transform: scale(1.05);
 }
 
 .footer {
@@ -396,4 +431,108 @@
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.filter-group.make {
+    margin-bottom: 31px;
+}
+
+.filter-group.make .search-box {
+    width: 270px;
+    height: 45px;
+    background: rgba(217, 217, 217, 0.5);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    border: none;
+    padding: 0 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 33px;
+    color: #676767;
+    margin-bottom: 15px;
+}
+
+.manufacturers-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 15px;
+    margin-top: 15px;
+}
+
+.manufacturer-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.manufacturer-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    background: rgba(217, 217, 217, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.manufacturer-item input[type="checkbox"]:checked {
+    background: rgb(103, 103, 103, 0.5);
+}
+
+.manufacturer-item input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    color: #d9d9d9;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.manufacturer-item label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 33px;
+    color: #676767;
+    cursor: pointer;
+}
+
+.manufacturer-count {
+    color: #676767;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    margin-left: auto;
+}
+
+.more-btn {
+    display: block;
+    width: 230px;
+    height: 60px;
+    margin: 50px auto;
+    background: rgba(135, 135, 135, 0.64);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+    color: #FFFFFF;
+    
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transition: transform 0.3s ease;
+}
+
+.more-btn:hover {
+    transform: scale(1.05);
 }

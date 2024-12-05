@@ -1,8 +1,42 @@
 import api_link from "./constants.js";
 
+let manufacturers = []; 
 
+async function initializeManufacturers() {
+    const res = await fetch(api_link + `/brands`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    });
+    const data = await res.json();
+    manufacturers = data.data;
+    renderManufacturersList(manufacturers);
+}
+
+function renderManufacturersList(manufacturers) {
+    const container = document.querySelector('.manufacturers-list');
+    container.innerHTML = manufacturers.map(manufacturer => `
+        <div class="manufacturer-item">
+            <input type="checkbox" id="manufacturer-${manufacturer.id}" value="${manufacturer.id}">
+            <label for="manufacturer-${manufacturer.id}">${manufacturer.name}</label>
+            <span class="manufacturer-count">(${manufacturer.count || 0})</span>
+        </div>
+    `).join('');
+}
 
 document.addEventListener('DOMContentLoaded', function () {
+    initializeManufacturers();
+
+    const searchInput = document.getElementById('manufacturer-search');
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filtered = manufacturers.filter(m => 
+            m.name.toLowerCase().includes(searchTerm)
+        );
+        renderManufacturersList(filtered);
+    });
 
     const type_buttons = document.querySelectorAll(".type-options button");
     let type_array = [];
@@ -72,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const brand_select = document.getElementById("brand-select");
 
     searchBtn.addEventListener('click', async function () {
+        const selectedManufacturers = Array.from(document.querySelectorAll('.manufacturer-item input:checked'))
+            .map(checkbox => checkbox.value);
 
         let brand = brand_select.options[brand_select.selectedIndex].text;
         let brand_id = (brand != "Any" ? await getBrandId(brand) : null);
