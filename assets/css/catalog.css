@@ -86,29 +86,6 @@
     transition: transform 0.3s ease;
 }
 
-.type-options .sports-button,
-.type-options .suv-button,
-.type-options .ev-button {
-    width: 100px;
-}
-
-.type-options .supercar-button {
-    width: 130px;
-}
-
-.type-options .convertible-button,
-.type-options .chauffeur-button {
-    width: 150px;
-}
-
-.type-options .sedan-button {
-    width: 105px;
-}
-
-.type-options .ultra-luxury-button {
-    width: 170px !important;
-}
-
 .price-range {
     width: 370px;
 }
@@ -353,7 +330,6 @@
 .filter-group.type {
     position: relative;
     width: 395px;
-    height: 220px;
     margin-bottom: 30px;
 }
 

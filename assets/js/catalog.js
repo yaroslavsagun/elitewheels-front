@@ -1,8 +1,15 @@
-import api_link from "./constants.js";
+import { api_link, img_link, basic_manufacturers, basic_types } from "./constants.js";
 
-let manufacturers = []; 
+let manufacturers = [];
+let types = [];
 
-async function initializeManufacturers() {
+let choosed_types = [];
+
+let shown_cars = 8;
+
+let query = "/cars/?";
+
+async function getManufacturers() {
     const res = await fetch(api_link + `/brands`, {
         method: 'GET',
         headers: {
@@ -11,50 +18,155 @@ async function initializeManufacturers() {
         }
     });
     const data = await res.json();
-    manufacturers = data.data;
-    renderManufacturersList(manufacturers);
+    if (data.data == undefined) {
+        manufacturers = basic_manufacturers;
+    } else {
+        manufacturers = data.data;
+    }
 }
 
-function renderManufacturersList(manufacturers) {
+async function getTypes() {
+    const res = await fetch(api_link + `/types`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    });
+    const data = await res.json();
+    if (data.data == undefined) {
+        types = basic_types;
+    } else {
+        types = data.data;
+    }
+}
+
+async function getCars() {
+    const res = await fetch(api_link + query, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    });
+    const data = await res.json();
+    if (data.data == undefined) {
+        return [];
+    } else {
+        return data.data;
+    }
+}
+
+
+function createManufacturersList(manufacturers) {
     const container = document.querySelector('.manufacturers-list');
-    container.innerHTML = manufacturers.map(manufacturer => `
+    container.innerHTML = `
         <div class="manufacturer-item">
-            <input type="checkbox" id="manufacturer-${manufacturer.id}" value="${manufacturer.id}">
+            <input type="checkbox" id="manufacturer-A" value="All" checked>
+            <label for="manufacturer-A">All</label>
+        </div>`
+
+    container.innerHTML += manufacturers.map(manufacturer => `
+        <div class="manufacturer-item">
+            <input type="checkbox" id="manufacturer-${manufacturer.id}" value="${manufacturer.name}" checked>
             <label for="manufacturer-${manufacturer.id}">${manufacturer.name}</label>
-            <span class="manufacturer-count">(${manufacturer.count || 0})</span>
         </div>
     `).join('');
+
+    const allTypes = document.querySelector('.manufacturer-item input#manufacturer-A');
+    const types = document.querySelectorAll('.manufacturer-item input');
+
+    allTypes.addEventListener('change', function () {
+        if (allTypes.checked) {
+            for (let i = 0; i < types.length; i++) {
+                types[i].checked = true;
+            }
+        }
+    })
+
+    for (let i = 0; i < types.length; i++) {
+        types[i].addEventListener('change', function () {
+            if (!types[i].checked) {
+                allTypes.checked = false;
+            } else if (document.querySelectorAll('.manufacturer-item input:checked').length
+                == document.querySelectorAll('.manufacturer-item').length - 1) {
+                allTypes.checked = true;
+            }
+        })
+    }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    initializeManufacturers();
-
-    const searchInput = document.getElementById('manufacturer-search');
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const filtered = manufacturers.filter(m => 
-            m.name.toLowerCase().includes(searchTerm)
-        );
-        renderManufacturersList(filtered);
-    });
+function createTypesList(types) {
+    const container = document.querySelector('.type-options');
+    container.innerHTML = types.map(type => `<button>${type.name}</button>`).join('');
 
     const type_buttons = document.querySelectorAll(".type-options button");
-    let type_array = [];
-
     for (var i = 0; i < type_buttons.length; i++) {
         type_buttons[i].addEventListener('click', function () {
-            if (type_array.includes(this.textContent)) {
-                let index = type_array.indexOf(this.textContent);
-                type_array.splice(index, 1);
+            if (choosed_types.includes(this.textContent)) {
+                let index = choosed_types.indexOf(this.textContent);
+                choosed_types.splice(index, 1);
             } else {
-                type_array.push(this.textContent);
+                choosed_types.push(this.textContent);
             }
             this.classList.toggle("active");
         })
     }
+}
+
+function createCarsList(cars) {
+    const car_list = document.querySelector(".cars-grid");
+
+    cars = cars.slice(0, shown_cars);
+    car_list.innerHTML = cars.map(car => `
+        <div class="car-card" id="${car.id}">
+                    <img src="${img_link}${car.main_image.path}" alt="${car.brand.name} ${car.type.name}">
+                    <div class="car-info" >
+                        <h3>${car.brand.name}</h3>
+                        <p>${car.engine} ${car.type.name}</p>
+                        <span class="price">${car.price}$/day</span>
+                    </div>
+                </div>`).join('');
+                console.log(car_list.innerHTML);
+    if (car_list.innerHTML == '') {
+        car_list.innerHTML = '<p>Fuck you</p>';
+    } else {
+        const car_elements = document.querySelectorAll('.cars-grid .car-card');
+        console.log(car_elements);
+        for (let i = 0; i < car_elements.length; i++) {
+            car_elements[i].addEventListener('click', function () {
+                alert(car_elements[i].id);
+            });
+        }
+    }
+}
+
+
+
+document.addEventListener('DOMContentLoaded', async function () {
+    await getManufacturers();
+    await getTypes();
+    createManufacturersList(manufacturers);
+    createTypesList(types);
+    createCarsList(await getCars());
+
+    const moreBtn = document.querySelector('.more-btn');
+    moreBtn.addEventListener('click', async function () {
+        shown_cars += 4;
+        createCarsList(await getCars());
+    })
+
+    const searchInput = document.getElementById('manufacturer-search');
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filtered = manufacturers.filter(m =>
+            m.name.toLowerCase().includes(searchTerm)
+        );
+        createManufacturersList(filtered);
+    });
 
     const color_buttons = document.querySelectorAll(".color-options button");
-    let color_array = [];
+    let color_array = ['ffffff', '000000', 'cd0000', '7a7a7a', '9d7800', '493129', '0d0847', '084712'];
 
     for (var i = 0; i < color_buttons.length; i++) {
         color_buttons[i].addEventListener('click', function () {
@@ -100,82 +212,53 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSliders.call(maxPrice);
     });
 
-
-
-    const searchBtn = document.getElementById("search-btn");
-    const brand_select = document.getElementById("brand-select");
+    const searchBtn = document.getElementById("filter-search-btn");
 
     searchBtn.addEventListener('click', async function () {
         const selectedManufacturers = Array.from(document.querySelectorAll('.manufacturer-item input:checked'))
             .map(checkbox => checkbox.value);
-
-        let brand = brand_select.options[brand_select.selectedIndex].text;
-        let brand_id = (brand != "Any" ? await getBrandId(brand) : null);
-
-        let type_ids = (type_array != [] ? await getTypeIds(type_array) : null);
-
+        let manufacturer_ids = (selectedManufacturers[0] != 'Any' ? await getManufacturerIds(selectedManufacturers) : null);
+        let type_ids = (choosed_types != [] ? await getTypeIds(choosed_types) : null);
         let price = [maxPrice.value, minPrice.value];
 
-        console.log(await getCars(brand_id, type_ids, price, color_array));
+        getQuery(manufacturer_ids, type_ids, price, color_array)
+        createCarsList(await getCars());
     });
 });
 
-async function getCars(brand, type_ids, price, color_array) {
-    let query = "/cars/?";
-    if (brand != null) {
-        query += `brand_ids[]=${brand}&`;
+function getQuery(manufacturer_ids, type_ids, price, color_array) {
+    query = "/cars/?";
+    if (manufacturer_ids != null && manufacturer_ids.length != manufacturers.length) {
+        query += `brand_ids[]=${manufacturer_ids.join("&brand_ids[]=")}&`;
     }
     if (type_ids != null && type_ids.length != 0) {
         query += `type_ids[]=${type_ids.join("&type_ids[]=")}&`;
     }
-    if (color_array.length != 0) {
+    if (color_array.length != 8) {
         query += `colors[]=${color_array.join("&colors[]=")}&`;
     }
     query += `max_price=${price[0]}&min_price=${price[1]}`;
-
-    const res = await fetch(api_link + query, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    })
-    const access = await res.json();
-    return access.data;
 }
 
-async function getBrandId(brand) {
-    const res = await fetch(api_link + `/brands`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    })
-    const access = await res.json();
-    
-    for (let i = 0; i < access.data.length; i++) {
-        if (access.data[i].name == brand) {
-            return access.data[i].id;
+async function getManufacturerIds(choosed_manufacturers) {
+    let ids = [];
+    for (let i = 0; i < choosed_manufacturers.length; i++) {
+        for (let j = 0; j < manufacturers.length; j++) {
+            if (manufacturers[j].name == choosed_manufacturers[i]) {
+                ids.push(manufacturers[j].id);
+                break;
+            }
         }
     }
+    return ids;
 }
 
-async function getTypeIds(type_array) {
-    const res = await fetch(api_link + `/types`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    })
-    const access = await res.json();
-
+async function getTypeIds(choosed_types) {
     let ids = [];
-    for (let i = 0; i < type_array.length; i++) {
-        for (let j = 0; j < access.data.length; j++) {
-            if (access.data[j].name == type_array[i]) {
-                ids.push(access.data[j].id);
+    for (let i = 0; i < choosed_types.length; i++) {
+        for (let j = 0; j < types.length; j++) {
+            if (types[j].name == choosed_types[i]) {
+                ids.push(types[j].id);
                 break;
             }
         }

@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Wheels - Catalog</title>
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/catalog.css">
-    <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Wheels - Catalog</title>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/catalog.css">
+  <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
 </head>
+
 <body>
   <div class="wrapper">
     <header class="header">
       <div class="container">
         <nav>
           <a href="#" class="logo" id="headerLogo">
-            <img src="assets/img/logo_dark.png" alt="Elite Wheels Logo" class="logo-black" id="logoBlack" style="display: flex;">
+            <img src="assets/img/logo_dark.png" alt="Elite Wheels Logo" class="logo-black" id="logoBlack"
+              style="display: flex;">
           </a>
           <ul class="navigation">
             <li><a href="#" id="navMakes" style="color: #000000;">Makes</a></li>
@@ -26,211 +29,172 @@
           <a href="#" class="search-btn" id="headerSearchBtn">
             <img src="assets/img/search.png" alt="Search" />
           </a>
-          <a href="#" class="rent-now-btn" id="headerRentNowBtn" style="background-color: #000000; color: #ffffff;">Rent now</a>
+          <a href="#" class="rent-now-btn" id="headerRentNowBtn" style="background-color: #000000; color: #ffffff;">Rent
+            now</a>
           <a href="#" class="account-btn" id="headerAccountBtn">
-            <img src="assets/img/account_icondark.png" alt="Account" class="account-black" id="accountBlack" style="display: flex;">
+            <img src="assets/img/account_icondark.png" alt="Account" class="account-black" id="accountBlack"
+              style="display: flex;">
           </a>
         </div>
       </div>
     </header>
 
     <div class="catalog">
-        <aside class="filters">
-            <h2>Filters</h2>
-            <div class="filter-group make">
-                <h3>Make</h3>
-                <input type="text" class="search-box" placeholder="Search manufacturer" id="manufacturer-search">
-                <div class="manufacturers-list">
-                    <div class="manufacturer-item">
-                         <input type="checkbox" id="manufacturer-All" value="All">
-                         <label for="manufacturer-All">All</label>
-                         <span class="manufacturer-count">(10)</span>
-                    </div>
-                    <div class="manufacturer-item">
-                        <input type="checkbox" id="manufacturer-ferrari" value="ferrari">
-                        <label for="manufacturer-ferrari">Ferrari</label>
-                        <span class="manufacturer-count">(2)</span>
-                    </div>
-                    <div class="manufacturer-item">
-                        <input type="checkbox" id="manufacturer-lamborghini" value="lamborghini">
-                        <label for="manufacturer-lamborghini">Lamborghini</label>
-                        <span class="manufacturer-count">(3)</span>
-                    </div>
-                    <div class="manufacturer-item">
-                        <input type="checkbox" id="manufacturer-porsche" value="porsche">
-                        <label for="manufacturer-porsche">Porsche</label>
-                        <span class="manufacturer-count">(2)</span>
-                    </div>
-                    <div class="manufacturer-item">
-                        <input type="checkbox" id="manufacturer-bentley" value="bentley">
-                        <label for="manufacturer-bentley">Bentley</label>
-                        <span class="manufacturer-count">(1)</span>
-                    </div>
-                    <div class="manufacturer-item">
-                        <input type="checkbox" id="manufacturer-rolls-royce" value="rolls-royce">
-                        <label for="manufacturer-rolls-royce">Rolls-Royce</label>
-                        <span class="manufacturer-count">(1)</span>
-                    </div>
-                    <div class="manufacturer-item">
-                        <input type="checkbox" id="manufacturer-mercedes" value="mercedes">
-                        <label for="manufacturer-mercedes">Mercedes-Benz</label>
-                        <span class="manufacturer-count">(1)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="filter-group type">
-                <h3>Type</h3>
-                <div class="type-options">
-                    <button id="sports-button">Sports</button>
-                    <button id="suv-button">SUV</button>
-                    <button id="supercar-button">Supercar</button>
-                    <button id="convertible-button">Convertible</button>
-                    <button id="sedan-button">Sedan</button>
-                    <button id="ev-button">EV</button>
-                    <button id="chauffeur-button">Chauffeur</button>
-                    <button id="ultra-luxury-button">Ultra-Luxury</button>
-                </div>
-            </div>
-            <div class="filter-group">
-                <h3>Price range</h3>
-                  <input class="inputMinPrice slider" type="range" min="0" max="10000" value="0" step="10" id="minPrice">
-                  <input class="inputMaxPrice slider" type="range" min="0" max="10000" value="10000" step="10" id="maxPrice">
-                <div class="price-inputs">
-                    <input type="number" id="minPriceInput" placeholder="Min">
-                    <div class="price-separator"></div>
-                    <input type="number" id="maxPriceInput" placeholder="Max">
-                </div>
-            </div>
-            <div class="filter-group">
-                <h3>Color</h3>
-                <div class="color-options">
-                    <button style="background-color: #FFFFFF;" id="whiteColorBtn"></button>
-                    <button style="background-color: #000000;" id="blackColorBtn"></button>
-                    <button style="background-color: #CD0000;"></button>
-                    <button style="background-color: #7A7A7A;"></button>
-                    <button style="background-color: #9D7800;"></button>
-                    <button style="background-color: #493129;"></button>
-                    <button style="background-color: #0D0847;"></button>
-                    <button style="background-color: #084712;"></button>
-                </div>
-            </div>
-            <button id="filter-search-btn" class="search-btn">Search</button>
-        </aside>
+      <aside class="filters">
+        <h2>Filters</h2>
+        <div class="filter-group make">
+          <h3>Make</h3>
+          <input type="text" class="search-box" placeholder="Search manufacturer" id="manufacturer-search">
+          <div class="manufacturers-list">
 
-        <div class="line"></div>
-
-        <div class="catalog-content">
-            <main class="cars-grid">
-                <div class="car-card">
-                    <img src="assets/img/mercedes_trending.png" alt="Mercedes-Benz AMG SL 63">
-                    <div class="car-info">
-                        <h3>Mercedes-Benz</h3>
-                        <p>AMG SL 63, SUV, 2022</p>
-                        <span class="price">1000$/day</span>
-                    </div>
-                </div>
-                <div class="car-card">
-                    <img src="assets/img/bentley_trending.png" alt="Bentley Continental GTC">
-                    <div class="car-info">
-                        <h3>Bentley</h3>
-                        <p>Continental GTC, Convertible, 2024</p>
-                        <span class="price">1000$/day</span>
-                    </div>
-                </div>
-                <div class="car-card">
-                    <img src="assets/img/ferrari_trending.png" alt="Ferrari Enzo">
-                    <div class="car-info">
-                        <h3>Ferrari</h3>
-                        <p>Enzo, Sports, 2017</p>
-                        <span class="price">1000$/day</span>
-                    </div>
-                </div>
-                <div class="car-card">
-                    <img src="assets/img/porsche_trending.png" alt="Porsche 997 Turbo">
-                    <div class="car-info">
-                        <h3>Porsche</h3>
-                        <p>997 Turbo, Convertible, 2009</p>
-                        <span class="price">1000$/day</span>
-                    </div>
-                </div>
-                <div class="car-card">
-                    <img src="assets/img/porsche2_trending.png" alt="Porsche 718 Cayman S">
-                    <div class="car-info">
-                        <h3>Porsche</h3>
-                        <p>718 Cayman S, Convertible, 2005</p>
-                        <span class="price">1000$/day</span>
-                    </div>
-                </div>
-                <div class="car-card">
-                    <img src="assets/img/bentley2_trending.png" alt="Bentley Continental GT V8">
-                    <div class="car-info">
-                        <h3>Bentley</h3>
-                        <p>Continental GT V8, Convertible, 2022</p>
-                        <span class="price">1000$/day</span>
-                    </div>
-                </div>
-                <div class="car-card">
-                    <img src="assets/img/porsche3_trending.png" alt="Porsche 992 Stinger GTR">
-                    <div class="car-info">
-                        <h3>Porsche</h3>
-                        <p>992 Stinger GTR, Sports, 2018</p>
-                        <span class="price">1000$/day</span>
-                    </div>
-                </div>
-                <div class="car-card">
-                    <img src="assets/img/mercedes2_trending.png" alt="Mercedes-Maybach S680 V12">
-                    <div class="car-info">
-                        <h3>Mercedes-Maybach</h3>
-                        <p>S680 V12, Supercar, 2022</p>
-                        <span class="price">1000$/day</span>
-                    </div>
-                </div>
-            </main>
-
-            <button class="more-btn">More</button>
+          </div>
         </div>
+        <div class="filter-group type">
+          <h3>Type</h3>
+          <div class="type-options">
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3>Price range</h3>
+          <input class="inputMinPrice slider" type="range" min="0" max="10000" value="0" step="10" id="minPrice">
+          <input class="inputMaxPrice slider" type="range" min="0" max="10000" value="10000" step="10" id="maxPrice">
+          <div class="price-inputs">
+            <input type="number" id="minPriceInput" placeholder="Min">
+            <div class="price-separator"></div>
+            <input type="number" id="maxPriceInput" placeholder="Max">
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3>Color</h3>
+          <div class="color-options">
+            <button style="background-color: #FFFFFF;" id="whiteColorBtn"></button>
+            <button style="background-color: #000000;" id="blackColorBtn"></button>
+            <button style="background-color: #CD0000;"></button>
+            <button style="background-color: #7A7A7A;"></button>
+            <button style="background-color: #9D7800;"></button>
+            <button style="background-color: #493129;"></button>
+            <button style="background-color: #0D0847;"></button>
+            <button style="background-color: #084712;"></button>
+          </div>
+        </div>
+        <button id="filter-search-btn" class="search-btn">Search</button>
+      </aside>
+
+      <div class="line"></div>
+
+      <div class="catalog-content">
+        <main class="cars-grid">
+          <div class="car-card">
+            <img src="assets/img/mercedes_trending.png" alt="Mercedes-Benz AMG SL 63">
+            <div class="car-info">
+              <h3>Mercedes-Benz</h3>
+              <p>AMG SL 63, SUV, 2022</p>
+              <span class="price">1000$/day</span>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="assets/img/bentley_trending.png" alt="Bentley Continental GTC">
+            <div class="car-info">
+              <h3>Bentley</h3>
+              <p>Continental GTC, Convertible, 2024</p>
+              <span class="price">1000$/day</span>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="assets/img/ferrari_trending.png" alt="Ferrari Enzo">
+            <div class="car-info">
+              <h3>Ferrari</h3>
+              <p>Enzo, Sports, 2017</p>
+              <span class="price">1000$/day</span>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="assets/img/porsche_trending.png" alt="Porsche 997 Turbo">
+            <div class="car-info">
+              <h3>Porsche</h3>
+              <p>997 Turbo, Convertible, 2009</p>
+              <span class="price">1000$/day</span>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="assets/img/porsche2_trending.png" alt="Porsche 718 Cayman S">
+            <div class="car-info">
+              <h3>Porsche</h3>
+              <p>718 Cayman S, Convertible, 2005</p>
+              <span class="price">1000$/day</span>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="assets/img/bentley2_trending.png" alt="Bentley Continental GT V8">
+            <div class="car-info">
+              <h3>Bentley</h3>
+              <p>Continental GT V8, Convertible, 2022</p>
+              <span class="price">1000$/day</span>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="assets/img/porsche3_trending.png" alt="Porsche 992 Stinger GTR">
+            <div class="car-info">
+              <h3>Porsche</h3>
+              <p>992 Stinger GTR, Sports, 2018</p>
+              <span class="price">1000$/day</span>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="assets/img/mercedes2_trending.png" alt="Mercedes-Maybach S680 V12">
+            <div class="car-info">
+              <h3>Mercedes-Maybach</h3>
+              <p>S680 V12, Supercar, 2022</p>
+              <span class="price">1000$/day</span>
+            </div>
+          </div>
+        </main>
+
+        <button class="more-btn">More</button>
+      </div>
     </div>
 
     <footer class="footer">
-        <div class="container">
-          <div class="footer-content">
-            <div class="contacts">
-              <h3>Contacts</h3>
-              <div class="contact-item" id="contactPhone">
-                <img src="assets/img/phone_icon.png" alt="Phone">
-                <p>+380 (00) 000 00 00</p>
-              </div>
-              <div class="contact-item" id="contactEmail">
-                <img src="assets/img/mail_icon.png" alt="Email">
-                <p>elitewheels@gmail.com</p>
-              </div>
-              <div class="contact-item" id="contactAddress">
-                <img src="assets/img/address_icon.png" alt="Address">
-                <p>address</p>
-              </div>
-              <div class="social-icons">
-                <a href="#" id="socialInstagram"><img src="assets/img/instagram.png" alt="Instagram"></a>
-                <a href="#" id="socialFacebook"><img src="assets/img/facebook.png" alt="Facebook"></a>
-                <a href="#" id="socialMessenger"><img src="assets/img/messenger.png" alt="Messenger"></a>
-                <a href="#" id="socialYouTube"><img src="assets/img/youtube.png" alt="YouTube"></a>
-              </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="contacts">
+            <h3>Contacts</h3>
+            <div class="contact-item" id="contactPhone">
+              <img src="assets/img/phone_icon.png" alt="Phone">
+              <p>+380 (00) 000 00 00</p>
             </div>
-            <div class="contact-form">
-              <h3>Get in touch with us</h3>
-              <form id="footerContactForm">
-                <input type="text" name="name" placeholder="Name" required id="contactName">
-                <input type="email" name="email" placeholder="Email" required id="contactEmail">
-                <input type="tel" name="phone" placeholder="Phone number" required id="contactPhone">
-                <button type="submit" id="contactSubmit">Send</button>
-              </form>
+            <div class="contact-item" id="contactEmail">
+              <img src="assets/img/mail_icon.png" alt="Email">
+              <p>elitewheels@gmail.com</p>
+            </div>
+            <div class="contact-item" id="contactAddress">
+              <img src="assets/img/address_icon.png" alt="Address">
+              <p>address</p>
+            </div>
+            <div class="social-icons">
+              <a href="#" id="socialInstagram"><img src="assets/img/instagram.png" alt="Instagram"></a>
+              <a href="#" id="socialFacebook"><img src="assets/img/facebook.png" alt="Facebook"></a>
+              <a href="#" id="socialMessenger"><img src="assets/img/messenger.png" alt="Messenger"></a>
+              <a href="#" id="socialYouTube"><img src="assets/img/youtube.png" alt="YouTube"></a>
             </div>
           </div>
-          <p class="copyright">© 2024 EliteWheels company. All rights reserved.</p>
+          <div class="contact-form">
+            <h3>Get in touch with us</h3>
+            <form id="footerContactForm">
+              <input type="text" name="name" placeholder="Name" required id="contactName">
+              <input type="email" name="email" placeholder="Email" required id="contactEmail">
+              <input type="tel" name="phone" placeholder="Phone number" required id="contactPhone">
+              <button type="submit" id="contactSubmit">Send</button>
+            </form>
+          </div>
         </div>
-      </footer>
+        <p class="copyright">© 2024 EliteWheels company. All rights reserved.</p>
+      </div>
+    </footer>
 
-    </div>
-    <script type="module" src="assets/js/script.js"></script>
-    <script type="module" src="assets/js/catalog.js"></script>
+  </div>
+  <script type="module" src="assets/js/script.js"></script>
+  <script type="module" src="assets/js/catalog.js"></script>
 </body>
+
 </html>

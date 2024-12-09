@@ -1,6 +1,6 @@
 const signupForm = document.getElementById('signupForm');
 
-import api_link from "./constants.js";
+import { api_link } from "./constants.js";
 
 async function createUser(fullName, email, phone, password) {
     const data = {

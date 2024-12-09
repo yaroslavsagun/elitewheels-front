@@ -27,6 +27,15 @@ app.get('/item', (req, res) => {
 app.get('/rent', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'item-rent.html'));
 });
+app.get('/car-edit', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'edit-car.html'));
+});
+app.get('/profile', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'edit-profile.html'));
+});
+app.get('/mycars', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'user-cars.html'));
+});
 
 
 app.use(express.static(__dirname+"/"));

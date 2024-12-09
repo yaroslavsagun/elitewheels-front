@@ -42,6 +42,12 @@
     gap: 30px;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
 .edit-profile-form input {
     width: 100%;
     height: 60px;
@@ -61,20 +67,27 @@
 }
 
 .edit-profile-form button {
-    width: 360px;
+    width: 250px;
     height: 60px;
-    background: #636363;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     border: none;
-    margin-left: auto;
-    margin-top: 60px;
     font-family: 'Raleway', sans-serif;
     font-size: 24px;
     font-weight: 400;
-    color: #FFFFFF;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+}
+
+.edit-profile-form .my-cars-btn {
+    background: #c2c2c2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+}
+
+.edit-profile-form .save-changes-btn {
+    background: #636363;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
 }
 
 .edit-profile-form button:hover {
@@ -110,6 +123,11 @@
     
     .profile-content {
         padding: 80px 30px;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        gap: 20px;
     }
     
     .edit-profile-form button {

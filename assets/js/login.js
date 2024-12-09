@@ -1,6 +1,6 @@
 const loginForm = document.getElementById('loginForm');
 
-import api_link from "./constants.js";
+import { api_link } from "./constants.js";
 
 async function login(email, password) {
     const data = {
