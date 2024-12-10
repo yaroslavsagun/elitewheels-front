@@ -1,4 +1,4 @@
-import { api_link, basic_user } from "./constants.js";
+import { api_link, defaultUserAvatarPath, basic_user, img_link } from "./constants.js";
 
 const header = document.querySelector(".header");
 
@@ -22,15 +22,26 @@ async function getUser() {
     } else {
         user = data.data;
     }
-    avatar_path = user.avatar ? user.avatar : "assets/img/profile_photo.png";
 }
 
-function changeAvatar(path = avatar_path) {
+function changeAvatar() {
+    let path = '';
+    if (localStorage.getItem('token') == null) {
+        account.innerHTML = `<img src="assets/img/account_icon.png" alt="Account" class="account-white" id="accountWhite">
+            <img src="assets/img/account_icondark.png" alt="Account" class="account-black" id="accountBlack" style="display: none;">`
+        return;
+    } else if (!user.avatar || user.avatar == '') {
+        path = defaultUserAvatarPath;
+    } else {
+        path = /*img_link +*/ user.avatar;
+    }
     account.innerHTML = `<img src="${path}" alt="Account" class="account-black" id="accountBlack"
               style="display: flex;">`;
 }
 
-document.addEventListener('DOMContentLoaded', async function() {
+
+
+document.addEventListener('DOMContentLoaded', async function () {
     await getUser();
     changeAvatar();
 
@@ -43,46 +54,46 @@ document.addEventListener('DOMContentLoaded', async function() {
     function smoothTransition(e) {
         e.preventDefault();
         document.body.style.opacity = 0;
-        setTimeout(function() {
+        setTimeout(function () {
             window.location = e.target.href;
         }, 500);
     }
 
     if (logoBtn) {
-        logoBtn.addEventListener('click', function(e) {
+        logoBtn.addEventListener('click', function (e) {
             e.preventDefault();
             location.href = '/';
         });
     }
 
     if (seeMoreBtn) {
-        seeMoreBtn.addEventListener('click', function(e) {
+        seeMoreBtn.addEventListener('click', function (e) {
             e.preventDefault();
             location.href = '/catalog';
         });
     }
 
     if (rentNowBtn) {
-        rentNowBtn.addEventListener('click', function(e) {
+        rentNowBtn.addEventListener('click', function (e) {
             e.preventDefault();
             location.href = '/catalog';
         });
     }
 
     if (accountBtn) {
-        accountBtn.addEventListener('click', function(e) {
+        accountBtn.addEventListener('click', function (e) {
             e.preventDefault();
             if (localStorage.getItem('token') == null) {
                 location.href = '/login';
             } else {
                 location.href = '/profile';
             }
-            
+
         });
     }
 
     if (signupLink) {
-        signupLink.addEventListener('click', function(e) {
+        signupLink.addEventListener('click', function (e) {
             e.preventDefault();
             location.href = '/signup';
         });
@@ -90,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     const homeLink = document.getElementById('homeLink');
     if (homeLink) {
-        homeLink.addEventListener('click', function(e) {
+        homeLink.addEventListener('click', function (e) {
             e.preventDefault();
             location.href = '/';
         });
@@ -98,7 +109,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     const loginLink = document.getElementById('loginLink');
     if (loginLink) {
-        loginLink.addEventListener('click', function(e) {
+        loginLink.addEventListener('click', function (e) {
             e.preventDefault();
             location.href = '/login';
         });
@@ -121,7 +132,7 @@ window.addEventListener("scroll", () => {
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
-    
+
     if (scrollPosition > 100 && !header.classList.contains("scrolled")) {
         isAnimating = true;
         header.style.transform = "translateY(-100%)";
@@ -130,11 +141,17 @@ window.addEventListener("scroll", () => {
             header.classList.add("scrolled");
             header.style.transform = "translateY(0)";
             searchBtn.style.display = "block";
-            logoWhite.style.display = "none";
-            logoBlack.style.display = "inline";
-            accountWhite.style.display = "none";
-            accountBlack.style.display = "inline";
-            
+            if (logoWhite) {
+                logoWhite.style.display = "none";
+                logoBlack.style.display = "inline";
+            }
+            if (accountWhite) {
+                accountWhite.style.display = "none";
+            }
+            if (accountBlack) {
+                accountBlack.style.display = "inline";
+            }
+
             setTimeout(() => {
                 isAnimating = false;
             }, 300);
@@ -142,16 +159,22 @@ window.addEventListener("scroll", () => {
     } else if (scrollPosition <= 100 && header.classList.contains("scrolled")) {
         isAnimating = true;
         header.style.transform = "translateY(-100%)";
-        
+
         setTimeout(() => {
             header.classList.remove("scrolled");
             header.style.transform = "translateY(0)";
             searchBtn.style.display = "none";
-            logoWhite.style.display = "inline";
-            logoBlack.style.display = "none";
-            accountWhite.style.display = "inline";
-            accountBlack.style.display = "none";
-            
+            if (logoWhite) {
+                logoWhite.style.display = "inline";
+                logoBlack.style.display = "none";
+            }
+            if (accountWhite) {
+                accountWhite.style.display = "inline";
+            }
+            if (accountBlack) {
+                accountBlack.style.display = "none";
+            }
+
             setTimeout(() => {
                 isAnimating = false;
             }, 300);
@@ -171,10 +194,10 @@ const isItemPage = document.querySelector('.item-content');
 
 if (isItemPage) {
     let lastScrollTop = 0;
-    
+
     window.addEventListener("scroll", () => {
         const scrollPosition = window.scrollY;
-        
+
         if (scrollPosition > 100) {
             if (scrollPosition > lastScrollTop) {
                 header.style.transform = "translateY(-100%)";
@@ -184,7 +207,7 @@ if (isItemPage) {
         } else {
             header.style.transform = "translateY(0)";
         }
-        
+
         lastScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
     }, { passive: true });
 }

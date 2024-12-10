@@ -1,8 +1,8 @@
-import { api_link, basic_user } from "./constants.js";
+import { api_link, basic_user, defaultUserAvatarPath, img_link } from "./constants.js";
 
 let user = []
 
-const avatar_field = document.querySelector('.profile-photo');
+const avatar_field = document.querySelector('.profile-sidebar');
 const name_field = document.getElementById('fullNameInput');
 const email_field = document.getElementById('emailInput');
 const phone_field = document.getElementById('phoneInput');
@@ -24,10 +24,10 @@ async function getUser() {
     } else {
         user = data.data;
     }
-    avatar_path = user.avatar ? user.avatar : "assets/img/profile_photo.png";
 }
 
 async function updateUser(fullName, email, phone, password) {
+    if (avatar_path == '') avatar_path = img_link + user.avatar;
     const data = {
         name: fullName,
         email: email,
@@ -64,18 +64,34 @@ function isValidPhone(phone) {
     return phoneRegex.test(phone);
 }
 
-function changeAvatar(path = avatar_path) {
-    avatar_field.innerHTML = `<label for="inputAvatar">
+function changeAvatar() {
+    let path = '';
+    if (!user.avatar || user.avatar == '') {
+        path = defaultUserAvatarPath;
+    } else {
+        path = img_link + user.avatar;
+    }
+    avatar_field.innerHTML = `
+    <div class="profile-photo">
+        <label for="inputAvatar">
             <img src="${path}" class="profile-photo" alt="Profile Photo">
-          </label>
-          <input id="inputAvatar" type="file" style="display: none">`;
+        </label>
+        <input id="inputAvatar" type="file" style="display: none">
+    </div>`;
 }
 
 function fillUserInfo(user) {
     changeAvatar();
+
     name_field.value = user.name;
+    name_field.placeholder = "Full name";
+
     email_field.value = user.email;
+    email_field.placeholder = "Email";
+
     phone_field.value = user.phone;
+    phone_field.placeholder = "Phone number";
+    password_field.placeholder = "New password";
 }
 
 document.addEventListener('DOMContentLoaded', async function () {

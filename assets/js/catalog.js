@@ -2,6 +2,7 @@ import { api_link, img_link, basic_manufacturers, basic_types } from "./constant
 
 let manufacturers = [];
 let types = [];
+let cars = [];
 
 let choosed_types = [];
 
@@ -51,9 +52,9 @@ async function getCars() {
     });
     const data = await res.json();
     if (data.data == undefined) {
-        return [];
+        cars = [];
     } else {
-        return data.data;
+        cars = data.data;
     }
 }
 
@@ -115,10 +116,12 @@ function createTypesList(types) {
 }
 
 function createCarsList(cars) {
-    const car_list = document.querySelector(".cars-grid");
+    const car_list = document.querySelector(".catalog-content");
+
+    let is_there_more = cars.length > 8;
 
     cars = cars.slice(0, shown_cars);
-    car_list.innerHTML = cars.map(car => `
+    let content = cars.map(car => `
         <div class="car-card" id="${car.id}">
                     <img src="${img_link}${car.main_image.path}" alt="${car.brand.name} ${car.type.name}">
                     <div class="car-info" >
@@ -128,27 +131,42 @@ function createCarsList(cars) {
                     </div>
                 </div>`).join('');
                 console.log(car_list.innerHTML);
-    if (car_list.innerHTML == '') {
-        car_list.innerHTML = '<p>Fuck you</p>';
+    if (content == '') {
+        car_list.innerHTML = '<p class="sorry-label">Sorry, but there are no cars with such filters</p>';
     } else {
+        car_list.innerHTML = `<main class="cars-grid">
+            ${content}
+        </main>`
+
+        if (is_there_more) {
+            car_list.innerHTML += `<button class="more-btn">More</button>`;
+        }
+
         const car_elements = document.querySelectorAll('.cars-grid .car-card');
         console.log(car_elements);
         for (let i = 0; i < car_elements.length; i++) {
             car_elements[i].addEventListener('click', function () {
-                alert(car_elements[i].id);
+                location.href = `/item?id=${car_elements[i].id}`;
             });
         }
     }
 }
 
-
-
-document.addEventListener('DOMContentLoaded', async function () {
+async function getParameters() {
     await getManufacturers();
     await getTypes();
+    await getCars()
+}
+
+function createCatalog() {
     createManufacturersList(manufacturers);
     createTypesList(types);
-    createCarsList(await getCars());
+    createCarsList(cars);
+}
+
+document.addEventListener('DOMContentLoaded', async function () {
+    await getParameters();
+    createCatalog();
 
     const moreBtn = document.querySelector('.more-btn');
     moreBtn.addEventListener('click', async function () {

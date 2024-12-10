@@ -120,6 +120,7 @@ body {
 .account-btn img {
     width: 63px;
     height: 63px;
+    border-radius: 100%;
 }
 
 .rent-now-btn {

@@ -486,6 +486,16 @@
     margin-left: auto;
 }
 
+.sorry-label {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+    color: #181818;
+}
+
 .more-btn {
     display: block;
     width: 230px;

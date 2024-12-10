@@ -1,6 +1,10 @@
 
 const img_link = 'http://134.122.89.133';
+
 const api_link = 'http://134.122.89.133/api';
+
+const defaultUserAvatarPath = 'assets/img/profile_photo.png';
+
 const basic_manufacturers = [
     { id: 0, name: 'Ferrari' },
     { id: 1, name: 'Lamborghini' },
@@ -18,8 +22,7 @@ const basic_types = [
     { id: 4, name: 'Sedan' },
     { id: 5, name: 'EV' },
     { id: 6, name: 'Chauffeur' },
-    { id: 7, name: 'Ultra-Luxury' },
-    { id: 8, name: 'Zzzzzzzzz' }];
+    { id: 7, name: 'Ultra-Luxury' }];
 
 const basic_cars = [
     
@@ -28,4 +31,4 @@ const basic_cars = [
 const basic_user = 
     {id: 1, name: "Venya", email:'cat@gmail.com', phone:'+3800000000', password:'12345678', avatar:'assets/img/cat.jpg'};
 
-export { img_link, api_link, basic_manufacturers, basic_types, basic_user };
+export { img_link, api_link, defaultUserAvatarPath, basic_manufacturers, basic_types, basic_user };
