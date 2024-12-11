@@ -1,4 +1,4 @@
-import { api_link, basic_user, defaultUserAvatarPath, img_link } from "./constants.js";
+import { api_link, defaultUserAvatarPath, img_link } from "./constants.js";
 
 let user = []
 
@@ -8,50 +8,57 @@ const email_field = document.getElementById('emailInput');
 const phone_field = document.getElementById('phoneInput');
 const password_field = document.getElementById('passwordInput');
 
-let avatar_path = '';
+const formData = new FormData();
 
 async function getUser() {
-    const res = await fetch(api_link + `/user?Authorization=` + localStorage.getItem('token'), {
+    const res = await fetch(api_link + `/user`, {
         method: 'GET',
         headers: {
+            'Authorization': 'Bearer '+ localStorage.getItem('token'),
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
     });
     const data = await res.json();
     if (data.data == undefined) {
-        user = basic_user;
+        user = [];
     } else {
         user = data.data;
     }
 }
 
 async function updateUser(fullName, email, phone, password) {
-    if (avatar_path == '') avatar_path = img_link + user.avatar;
     const data = {
         name: fullName,
         email: email,
         phone: phone,
-        password: password,
-        avatar: avatar_path
+        password: password
     }
-    console.log(data);
+    updateAvatar();
     const res = await fetch(api_link + '/user', {
         method: 'POST',
         headers: {
+            'Authorization': 'Bearer '+ localStorage.getItem('token'),
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
         body: JSON.stringify(data)
     })
     const result = await res.json();
-    if (result.token) {
-        localStorage.setItem('token', result.token);
-        return true;
-    } else {
-        alert(result.message);
-        return false;
-    }
+    console.log(result);
+}
+
+async function updateAvatar() {
+    const res = await fetch(api_link + '/user', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer '+ localStorage.getItem('token'),
+            'Accept': 'application/json'
+        },
+        body: formData
+    })
+    const result = await res.json();
+    console.log(result);
 }
 
 function isValidEmail(email) {
@@ -100,6 +107,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const saveBtn = document.getElementById('saveChangesBtn');
     const myCarsBtn = document.getElementById('myCarsBtn');
     const avatarInput = document.getElementById('inputAvatar');
+    const exitBtn = document.getElementById('exitBtn');
 
     function smoothTransition(e) {
         e.preventDefault();
@@ -143,11 +151,22 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
+    if (exitBtn) {
+        exitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            location.href = '/';
+        });
+    }
+
     var reader = new FileReader();
     if (avatarInput) {
         avatarInput.addEventListener('change', function (e) {
             e.preventDefault();
             let file = e.target.files[0];
+
+            
+            formData.append('avatar', file);
 
             let img_field = document.querySelector(".profile-photo img");
             img_field.title = file.name;

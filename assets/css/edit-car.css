@@ -23,7 +23,7 @@
 
 .main-photo {
     width: 1000px;
-    height: 815px;
+    height: 750px;
     margin-left: -100px;
     background: #FAFAFA;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -136,7 +136,7 @@
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(4, 300px);
+    grid-template-columns: repeat(5, 240px);
     gap: 90px;
 }
 

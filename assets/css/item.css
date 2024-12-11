@@ -38,12 +38,18 @@ body, html {
 }
 
 .item-header {
-    display: flex;
+    display: grid;
+    grid-template-areas: 
+    "info special"
+    "image special";
+    grid-template-columns: 1fr max-content ;
     justify-content: space-between;
     align-items: flex-start;
+    align-content: space-between;
 }
 
 .item-info {
+    grid-area: 'info';
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -57,7 +63,7 @@ body, html {
     margin-left: 8px;
 }
 
-.item-info .item-year {
+.item-info .item-price {
     font-family: 'Nunito', sans-serif;
     font-size: 30px;
     font-weight: 400;
@@ -73,6 +79,11 @@ body, html {
 }
 
 .item-specs {
+    grid-area: 'special';
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -98,12 +109,12 @@ body, html {
 }
 
 .item-image {
+    grid-area: 'image';
     width: 100%;
+    height: min-content;
     max-width: 1011px;
-    margin: -100px auto 0;
+    margin: 50px auto 50px;
     position: relative;
-    padding-top: 56.25%;
-    padding: 200px 0 0 0;
     overflow: visible;
     z-index: 1;
     transition: transform 0.3s ease-in-out;
@@ -114,13 +125,7 @@ body, html {
 }
 
 .item-image img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: -250px 0 0 0;
-    width: 100%;
-    object-fit: contain;
-    cursor: pointer;
+    max-height: 512px;
 }
 
 .gallery-title, .about-title {
@@ -133,7 +138,7 @@ body, html {
 
 .item-gallery {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 60px;
 }
 
@@ -160,6 +165,27 @@ body, html {
     color: #000000;
     margin-bottom: 20px;
     text-align: justify;
+}
+
+.contact-description {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    line-height: 33px;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.contact-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 30px;
+}
+
+table {
+    border-spacing: 10px;
 }
 
 .footer {

@@ -1,14 +1,15 @@
-import { api_link, img_link, basic_manufacturers, basic_types } from "./constants.js";
+import { api_link, img_link } from "./constants.js";
 
 let manufacturers = [];
 let types = [];
 let cars = [];
 
+let choosed_manufacturers = [];
 let choosed_types = [];
 
-let shown_cars = 8;
+let shown_cars_amount = 8;
 
-let query = "/cars/?";
+let query = "/cars?";
 
 async function getManufacturers() {
     const res = await fetch(api_link + `/brands`, {
@@ -20,10 +21,11 @@ async function getManufacturers() {
     });
     const data = await res.json();
     if (data.data == undefined) {
-        manufacturers = basic_manufacturers;
+        manufacturers = [];
     } else {
         manufacturers = data.data;
     }
+    choosed_manufacturers = Array.from(manufacturers).map(manufacturer => manufacturer.name);
 }
 
 async function getTypes() {
@@ -36,7 +38,7 @@ async function getTypes() {
     });
     const data = await res.json();
     if (data.data == undefined) {
-        types = basic_types;
+        types = [];
     } else {
         types = data.data;
     }
@@ -61,67 +63,56 @@ async function getCars() {
 
 function createManufacturersList(manufacturers) {
     const container = document.querySelector('.manufacturers-list');
-    container.innerHTML = `
-        <div class="manufacturer-item">
-            <input type="checkbox" id="manufacturer-A" value="All" checked>
-            <label for="manufacturer-A">All</label>
-        </div>`
 
-    container.innerHTML += manufacturers.map(manufacturer => `
+    container.innerHTML = manufacturers.map(manufacturer => `
         <div class="manufacturer-item">
-            <input type="checkbox" id="manufacturer-${manufacturer.id}" value="${manufacturer.name}" checked>
+            <input type="checkbox" id="manufacturer-${manufacturer.id}" value="${manufacturer.name}" 
+            ${choosed_manufacturers.includes(manufacturer.name) ? "checked" : ""}>
             <label for="manufacturer-${manufacturer.id}">${manufacturer.name}</label>
         </div>
     `).join('');
 
-    const allTypes = document.querySelector('.manufacturer-item input#manufacturer-A');
-    const types = document.querySelectorAll('.manufacturer-item input');
-
-    allTypes.addEventListener('change', function () {
-        if (allTypes.checked) {
-            for (let i = 0; i < types.length; i++) {
-                types[i].checked = true;
+    container.addEventListener('change', function(event) {
+        if (event.target.closest('input')) {
+            let checkbox = event.target.closest('input');
+            if (checkbox.checked) {
+                if (!choosed_manufacturers.includes(checkbox.value)) {
+                    choosed_manufacturers.push(checkbox.value);
+                }
+            } else {
+                let index = choosed_manufacturers.indexOf(checkbox.value)
+                choosed_manufacturers.splice(index, 1);
             }
+            console.log(choosed_manufacturers);
         }
     })
-
-    for (let i = 0; i < types.length; i++) {
-        types[i].addEventListener('change', function () {
-            if (!types[i].checked) {
-                allTypes.checked = false;
-            } else if (document.querySelectorAll('.manufacturer-item input:checked').length
-                == document.querySelectorAll('.manufacturer-item').length - 1) {
-                allTypes.checked = true;
-            }
-        })
-    }
 }
 
 function createTypesList(types) {
     const container = document.querySelector('.type-options');
     container.innerHTML = types.map(type => `<button>${type.name}</button>`).join('');
 
-    const type_buttons = document.querySelectorAll(".type-options button");
-    for (var i = 0; i < type_buttons.length; i++) {
-        type_buttons[i].addEventListener('click', function () {
-            if (choosed_types.includes(this.textContent)) {
-                let index = choosed_types.indexOf(this.textContent);
+    container.addEventListener('click', function(event) {
+        if (event.target.closest('button')) {
+            let type = event.target.closest('button');
+            if (choosed_types.includes(type.textContent)) {
+                let index = choosed_types.indexOf(type.textContent);
                 choosed_types.splice(index, 1);
             } else {
-                choosed_types.push(this.textContent);
+                choosed_types.push(type.textContent);
             }
-            this.classList.toggle("active");
-        })
-    }
+            type.classList.toggle("active");
+        }
+    });
 }
 
 function createCarsList(cars) {
     const car_list = document.querySelector(".catalog-content");
 
-    let is_there_more = cars.length > 8;
+    let are_there_more = cars.length > 8;
 
-    cars = cars.slice(0, shown_cars);
-    let content = cars.map(car => `
+    let shown_cars = cars.slice(0, shown_cars_amount);
+    let content = shown_cars.map(car => `
         <div class="car-card" id="${car.id}">
                     <img src="${img_link}${car.main_image.path}" alt="${car.brand.name} ${car.type.name}">
                     <div class="car-info" >
@@ -130,7 +121,6 @@ function createCarsList(cars) {
                         <span class="price">${car.price}$/day</span>
                     </div>
                 </div>`).join('');
-                console.log(car_list.innerHTML);
     if (content == '') {
         car_list.innerHTML = '<p class="sorry-label">Sorry, but there are no cars with such filters</p>';
     } else {
@@ -138,17 +128,19 @@ function createCarsList(cars) {
             ${content}
         </main>`
 
-        if (is_there_more) {
+        if (are_there_more) {
             car_list.innerHTML += `<button class="more-btn">More</button>`;
         }
 
-        const car_elements = document.querySelectorAll('.cars-grid .car-card');
-        console.log(car_elements);
-        for (let i = 0; i < car_elements.length; i++) {
-            car_elements[i].addEventListener('click', function () {
-                location.href = `/item?id=${car_elements[i].id}`;
-            });
-        }
+        car_list.addEventListener('click', function(event) {
+            if (event.target.closest('.car-card')) {
+                let id = event.target.closest('.car-card').id;
+                location.href = `/item?id=${id}`;
+            } else if (event.target.closest('button')){
+                shown_cars_amount += 4;
+                createCarsList(cars);
+            }
+        });
     }
 }
 
@@ -168,12 +160,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     await getParameters();
     createCatalog();
 
-    const moreBtn = document.querySelector('.more-btn');
-    moreBtn.addEventListener('click', async function () {
-        shown_cars += 4;
-        createCarsList(await getCars());
-    })
-
     const searchInput = document.getElementById('manufacturer-search');
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
@@ -183,21 +169,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         createManufacturersList(filtered);
     });
 
-    const color_buttons = document.querySelectorAll(".color-options button");
-    let color_array = ['ffffff', '000000', 'cd0000', '7a7a7a', '9d7800', '493129', '0d0847', '084712'];
-
-    for (var i = 0; i < color_buttons.length; i++) {
-        color_buttons[i].addEventListener('click', function () {
-            let color = getColor(this.style.backgroundColor);
+    const color_opt = document.querySelector('.color-options');
+    color_opt.addEventListener('click', function(event) {
+        if (event.target.closest('button')) {
+            let color = getColor(event.target.closest('button').style.backgroundColor);
             if (color_array.includes(color)) {
                 let index = color_array.indexOf(color);
                 color_array.splice(index, 1);
             } else {
                 color_array.push(color);
             }
-            this.classList.toggle("active");
-        })
-    }
+            event.target.closest('button').classList.toggle('active');
+        }
+    });
+    let color_array = ['ffffff', '000000', 'cd0000', '7a7a7a', '9d7800', '493129', '0d0847', '084712'];
+
 
     const minPrice = document.getElementById('minPrice');
     const maxPrice = document.getElementById('maxPrice');
@@ -233,19 +219,19 @@ document.addEventListener('DOMContentLoaded', async function () {
     const searchBtn = document.getElementById("filter-search-btn");
 
     searchBtn.addEventListener('click', async function () {
-        const selectedManufacturers = Array.from(document.querySelectorAll('.manufacturer-item input:checked'))
-            .map(checkbox => checkbox.value);
-        let manufacturer_ids = (selectedManufacturers[0] != 'Any' ? await getManufacturerIds(selectedManufacturers) : null);
+        let manufacturer_ids = (choosed_manufacturers.length != manufacturers.length + 1 ?
+            await getManufacturerIds(choosed_manufacturers) : null);
         let type_ids = (choosed_types != [] ? await getTypeIds(choosed_types) : null);
         let price = [maxPrice.value, minPrice.value];
 
-        getQuery(manufacturer_ids, type_ids, price, color_array)
-        createCarsList(await getCars());
+        getQuery(manufacturer_ids, type_ids, price, color_array);
+        await getCars()
+        createCarsList(cars);
     });
 });
 
 function getQuery(manufacturer_ids, type_ids, price, color_array) {
-    query = "/cars/?";
+    query = "/cars?";
     if (manufacturer_ids != null && manufacturer_ids.length != manufacturers.length) {
         query += `brand_ids[]=${manufacturer_ids.join("&brand_ids[]=")}&`;
     }

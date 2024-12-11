@@ -1,5 +1,14 @@
-.logo .logo-black .account-btn {
+.logo .logo-black .account-btn .exit-btn {
     display: inline;
+}
+
+.exit-btn {
+    padding: 5px;
+}
+
+.exit-btn img {
+    width: 40px;
+    height: 40px;
 }
 
 .header.scrolled .rent-now-btn {

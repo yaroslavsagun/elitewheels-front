@@ -157,3 +157,40 @@
     width: 21px;
     height: 46px;
 }
+
+.more-btn {
+    display: block;
+    width: 230px;
+    height: 60px;
+    margin: 50px auto;
+    background: rgba(135, 135, 135, 0.64);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+    color: #FFFFFF;
+    
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transition: transform 0.3s ease;
+}
+
+.more-btn:hover {
+    transform: scale(1.05);
+}
+
+.sorry-label {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+    color: #181818;
+}

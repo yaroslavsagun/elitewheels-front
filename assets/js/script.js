@@ -1,24 +1,29 @@
-import { api_link, defaultUserAvatarPath, basic_user, img_link } from "./constants.js";
+import { api_link, defaultUserAvatarPath, img_link } from "./constants.js";
 
 const header = document.querySelector(".header");
+const footer = document.querySelector(".footer");
+const searchBtn = document.querySelector(".search-btn");
+const logoWhite = document.querySelector(".logo-white");
+const logoBlack = document.querySelector(".logo-black");
+const accountWhite = document.querySelector(".account-white");
+const accountBlack = document.querySelector(".account-black");
 
 const account = document.getElementById('headerAccountBtn');
 
 let user = [];
 
-let avatar_path = '';
-
 async function getUser() {
-    const res = await fetch(api_link + `/user?Authorization=` + localStorage.getItem('token'), {
+    const res = await fetch(api_link + `/user`, {
         method: 'GET',
         headers: {
+            'Authorization': 'Bearer '+ localStorage.getItem('token'),
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
     });
     const data = await res.json();
     if (data.data == undefined) {
-        user = basic_user;
+        user = [];
     } else {
         user = data.data;
     }
@@ -27,13 +32,17 @@ async function getUser() {
 function changeAvatar() {
     let path = '';
     if (localStorage.getItem('token') == null) {
-        account.innerHTML = `<img src="assets/img/account_icon.png" alt="Account" class="account-white" id="accountWhite">
+        if (logoWhite) {
+            account.innerHTML = `<img src="assets/img/account_icon.png" alt="Account" class="account-white" id="accountWhite">
             <img src="assets/img/account_icondark.png" alt="Account" class="account-black" id="accountBlack" style="display: none;">`
+        } else {
+            account.innerHTML = `<img src="assets/img/account_icondark.png" alt="Account" class="account-black" id="accountBlack">`
+        }
         return;
     } else if (!user.avatar || user.avatar == '') {
         path = defaultUserAvatarPath;
     } else {
-        path = /*img_link +*/ user.avatar;
+        path = img_link + user.avatar;
     }
     account.innerHTML = `<img src="${path}" alt="Account" class="account-black" id="accountBlack"
               style="display: flex;">`;
@@ -44,7 +53,7 @@ function changeAvatar() {
 document.addEventListener('DOMContentLoaded', async function () {
     await getUser();
     changeAvatar();
-
+    
     const seeMoreBtn = document.querySelector('.see-more-btn');
     const rentNowBtn = document.querySelector('.rent-now-btn');
     const logoBtn = document.getElementById('headerLogo');
@@ -116,13 +125,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-const footer = document.querySelector(".footer");
-const searchBtn = document.querySelector(".search-btn");
-const logoWhite = document.querySelector(".logo-white");
-const logoBlack = document.querySelector(".logo-black");
-const accountWhite = document.querySelector(".account-white");
-const accountBlack = document.querySelector(".account-black");
-
 let lastScrollTop = 0;
 let isAnimating = false;
 
@@ -147,8 +149,6 @@ window.addEventListener("scroll", () => {
             }
             if (accountWhite) {
                 accountWhite.style.display = "none";
-            }
-            if (accountBlack) {
                 accountBlack.style.display = "inline";
             }
 
@@ -170,8 +170,6 @@ window.addEventListener("scroll", () => {
             }
             if (accountWhite) {
                 accountWhite.style.display = "inline";
-            }
-            if (accountBlack) {
                 accountBlack.style.display = "none";
             }
 
