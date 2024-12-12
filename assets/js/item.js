@@ -10,7 +10,7 @@ function getId() {
 var car = [];
 
 async function getCar() {
-    const res = await fetch(api_link + '/cars?' + getId(), {
+    const res = await fetch(api_link + '/cars/' + getId(), {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -18,11 +18,12 @@ async function getCar() {
         }
     });
     const data = await res.json();
-    if (data.data[0] == undefined) {
+    console.log(data);
+    if (data.data == undefined) {
         alert('There is no such car');
         location.href = '/';
     } else {
-        car = data.data[0];
+        car = data.data;
     }
 }
 
@@ -56,7 +57,8 @@ function createCarHeader() {
 
     car_header.innerHTML +=
     `<div class="item-image">
-        <img src="${img_link}${car.main_image.path}" alt="${car.brand.name} ${car.type.name}">
+        <img src="${car.main_image != null ? img_link+car.main_image.path : "assets/img/blank_car.png"}" 
+        alt="${car.brand.name} ${car.type.name}">
     </div>`
 }
 

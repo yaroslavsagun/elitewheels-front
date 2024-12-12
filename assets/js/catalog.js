@@ -114,7 +114,7 @@ function createCarsList(cars) {
     let shown_cars = cars.slice(0, shown_cars_amount);
     let content = shown_cars.map(car => `
         <div class="car-card" id="${car.id}">
-                    <img src="${img_link}${car.main_image.path}" alt="${car.brand.name} ${car.type.name}">
+                    <img src="${car.main_image != null ? img_link+car.main_image.path : "assets/img/blank_car.png"}" alt="${car.brand.name} ${car.type.name}">
                     <div class="car-info" >
                         <h3>${car.brand.name}</h3>
                         <p>${car.engine} ${car.type.name}</p>
