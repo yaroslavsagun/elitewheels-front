@@ -52,45 +52,110 @@
 
                     <div class="right-section">
                         <div class="form-group">
-                            <label>Make</label>
-                            <input type="text" placeholder="Ferrari">
-                        </div>
-
-                        <div class="form-group">
                             <label>Model</label>
-                            <input type="text" placeholder="LaFerrari">
+                            <input type="text" placeholder="LaFerrari" id="model-input">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group make">
+                            <label>Make</label>
+                            <div class="manufacturers-list">
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="ferrari" value="Ferrari">
+                                    <label for="ferrari">Ferrari</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="porsche" value="Porsche">
+                                    <label for="porsche">Porsche</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="lamborghini" value="Lamborghini">
+                                    <label for="lamborghini">Lamborghini</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="bentley" value="Bentley">
+                                    <label for="bentley">Bentley</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="rolls-royce" value="Rolls-Royce">
+                                    <label for="rolls-royce">Rolls-Royce</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="mercedes" value="Mercedes-Benz">
+                                    <label for="mercedes">Mercedes-Benz</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="bmw" value="BMW">
+                                    <label for="bmw">BMW</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="audi" value="Audi">
+                                    <label for="audi">Audi</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="mclaren" value="McLaren">
+                                    <label for="mclaren">McLaren</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="aston-martin" value="Aston Martin">
+                                    <label for="aston-martin">Aston Martin</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group type">
                             <label>Type</label>
-                            <div class="type-options">
-                                <button id="sports-button">Sports</button>
-                                <button id="suv-button">SUV</button>
-                                <button id="supercar-button">Supercar</button>
-                                <button id="convertible-button">Convertible</button>
-                                <button id="sedan-button">Sedan</button>
-                                <button id="ev-button">EV</button>
-                                <button id="chauffeur-button">Chauffeur</button>
-                                <button id="ultra-luxury-button">Ultra-Luxury</button>
+                            <div class="manufacturers-list">
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="sports" value="sports">
+                                    <label for="sports">Sports</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="suv" value="suv">
+                                    <label for="suv">SUV</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="supercar" value="supercar">
+                                    <label for="supercar">Supercar</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="convertible" value="convertible">
+                                    <label for="convertible">Convertible</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="sedan" value="sedan">
+                                    <label for="sedan">Sedan</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="ev" value="ev">
+                                    <label for="ev">EV</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="chauffeur" value="chauffeur">
+                                    <label for="chauffeur">Chauffeur</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="ultra-luxury" value="ultra-luxury">
+                                    <label for="ultra-luxury">Ultra-Luxury</label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="text" placeholder="1000$">
+                            <input type="text" placeholder="1000$" id="price-input">
                         </div>
 
                         <div class="form-group">
                             <label>Color</label>
                             <div class="color-options">
-                                <button class="white"></button>
-                                <button class="black"></button>
-                                <button class="red"></button>
-                                <button class="gray"></button>
-                                <button class="gold"></button>
-                                <button class="brown"></button>
-                                <button class="navy"></button>
-                                <button class="green"></button>
+                                <button class="white" data-color="#FFFFFF"></button>
+                                <button class="black" data-color="#000000"></button>
+                                <button class="red" data-color="#CD0000"></button>
+                                <button class="gray" data-color="#7A7A7A"></button>
+                                <button class="gold" data-color="#9D7800"></button>
+                                <button class="brown" data-color="#493129"></button>
+                                <button class="navy" data-color="#0D0847"></button>
+                                <button class="green" data-color="#084712"></button>
                             </div>
                         </div>
                     </div>
@@ -98,7 +163,7 @@
 
                 <div class="about-section">
                     <h3>About</h3>
-                    <textarea placeholder="Tell us a little about the car ......"></textarea>
+                    <textarea placeholder="Tell us a little about the car ......" id="about-input"></textarea>
                 </div>
 
                 <div class="features-section">
@@ -106,23 +171,23 @@
                     <div class="features-grid">
                         <div class="feature-input">
                             <label>Engine</label>
-                            <input type="text" placeholder="Characteristic">
+                            <input type="text" placeholder="Characteristic" id="engine-input">
                         </div>
                         <div class="feature-input">
                             <label>Time to 100km/h</label>
-                            <input type="text" placeholder="Characteristic">
+                            <input type="text" placeholder="Characteristic" id="acceleration-input">
                         </div>
                         <div class="feature-input">
                             <label>Max speed</label>
-                            <input type="text" placeholder="Characteristic">
+                            <input type="text" placeholder="Characteristic" id="speed-input">
                         </div>
                         <div class="feature-input">
                             <label>Max power</label>
-                            <input type="text" placeholder="Characteristic">
+                            <input type="text" placeholder="Characteristic" id="power-input">
                         </div>
                         <div class="feature-input">
                             <label>Power per liter</label>
-                            <input type="text" placeholder="Characteristic">
+                            <input type="text" placeholder="Characteristic" id="power-liter-input">
                         </div>
                     </div>
                 </div>

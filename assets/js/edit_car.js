@@ -110,6 +110,20 @@ document.addEventListener('DOMContentLoaded', async function () {
             };
         })
     }
+
+    // Додаємо обробку кліків по кольорах
+    const colorButtons = document.querySelectorAll('.color-options button');
+    colorButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Якщо кнопка вже вибрана - знімаємо вибір
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+            } else {
+                // Додаємо клас selected для поточної кнопки
+                this.classList.add('selected');
+            }
+        });
+    });
 });
 
 function isPriceValid() {
