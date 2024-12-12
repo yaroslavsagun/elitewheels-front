@@ -57,8 +57,6 @@ async function updateAvatar() {
         },
         body: formData
     })
-    const result = await res.json();
-    console.log(result);
 }
 
 function isValidEmail(email) {

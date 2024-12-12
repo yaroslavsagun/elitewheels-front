@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (add_car) {
         add_car.addEventListener('click', function () {
-            location.href = '/car-edit?action=create';
+            location.href = '/car-edit';
         })
     }
 });

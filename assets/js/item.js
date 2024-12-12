@@ -18,7 +18,7 @@ async function getCar() {
         }
     });
     const data = await res.json();
-    if (data.data == undefined) {
+    if (data.data[0] == undefined) {
         alert('There is no such car');
         location.href = '/';
     } else {
