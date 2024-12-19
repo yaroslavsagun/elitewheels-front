@@ -45,7 +45,6 @@ async function updateUser(fullName, email, phone, password) {
         body: JSON.stringify(data)
     })
     const result = await res.json();
-    console.log(result);
 }
 
 async function updateAvatar() {
@@ -173,7 +172,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             reader.onload = function (event) {
                 img_field.src = event.target.result;
-                avatar_path = event.target.result;
             };
         })
     }

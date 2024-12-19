@@ -1,4 +1,3 @@
-//const img_link = '';
 const img_link = 'http://134.122.89.133';
 
 const api_link = 'http://134.122.89.133/api';
