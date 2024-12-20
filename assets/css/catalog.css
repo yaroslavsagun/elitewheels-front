@@ -318,10 +318,6 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.footer.scrolled {
-    background-color: #000000;
-    color: #FFFFFF;
-}
 
 .footer.scrolled a, .footer.scrolled p {
     color: #FFFFFF;
