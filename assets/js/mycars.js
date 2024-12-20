@@ -30,7 +30,8 @@ async function deleteCar(id) {
             'Accept': 'application/json'
         },
     });
-    const result = res.json();
+    const result = await res.json();
+    console.log(result);
     return result.success;
 }
 
@@ -70,19 +71,19 @@ function createCarsList(cars) {
             car_list.innerHTML += `<button class="more-btn">More</button>`;
         }
 
-        car_list.addEventListener('click', function (event) {
+        
+
+        car_list.addEventListener('click', async function (event) {
             let id = event.target.closest('.car-item').id
-            console.log(id);
             if (event.target.closest('.edit-btn')) {
                 location.href = `/car-edit?id=${id}`
             } else if (event.target.closest('.delete-btn')) {
-                let result = deleteCar(id);
+                let result = await deleteCar(id);
                 if (result) {
                     let deleted = cars.filter(car => car.id === id);
                     cars.splice(cars.indexOf(deleted),1);
                     createCarsList(cars);
                 }
-                location.href = `/car-edit`
             } else if (event.target.closest('.car-item')) {
                 location.href = `/item?id=${id}`;
             }

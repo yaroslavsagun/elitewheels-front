@@ -89,20 +89,21 @@ async function updateCar(id, data) {
         body: JSON.stringify(data)
     });
     const result = await res.json();
-    updateImage(id);
 }
 
 async function updateImage(id) {
+    console.log(formData.get('main_image'));
     const res = await fetch(api_link + `/cars/${id}`, {
         method: 'PUT',
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token'),
-            'Content-Type': 'application/json',
+            'Content-Type': 'image/png',
             'Accept': 'application/json'
         },
         body: formData
     });
     const result = await res.json();
+    console.log(result);
 }
 
 async function addCar(data) {
@@ -116,9 +117,7 @@ async function addCar(data) {
         body: JSON.stringify(data)
     });
     const result = await res.json();
-
-    let addedCar = result.data;
-    updateImage(addedCar);
+    return result.data.id;
 }
 
 function gatherData() {
@@ -187,11 +186,11 @@ function fillCarInfo(car) {
     power_liter_field.value = car.power_per_liter;
 
     imageInput.innerHTML =
-                    `<label for="mainPhoto" class="upload-label">
+                    `<label for="main_image" class="upload-label">
                         <img src="${car.main_image != null ? img_link+car.main_image.path : "assets/img/blank_car.png"}" 
                         alt="Car Image" class="center">
                     </label>
-                    <input type="file" id="mainPhoto" accept="image/*" style="display: none;">`;
+                    <input type="file" id="main_image" style="display: none;">`;
 
     let picked_color = document.querySelector(`[data-color="#${car.color.toUpperCase()}"]`);
     picked_color.classList.toggle('selected');
@@ -219,13 +218,14 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const add_btn = document.querySelector('.submit-btn');
     if (add_btn) {
-        add_btn.addEventListener('click', function () {
+        add_btn.addEventListener('click', async function () {
             let data = gatherData();
             if (id != null) {
-                updateCar(id, data);
+                await updateCar(id, data);
             } else {
-                addCar(data);
+                id = await addCar(data);
             }
+            await updateImage(id);
             location.href = '/mycars';
         })
     }
