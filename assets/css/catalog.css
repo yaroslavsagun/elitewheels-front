@@ -12,6 +12,7 @@
 }
 
 .filters {
+    z-index: 1;
     position: absolute;
     width: 493px;
     left: 0px;
@@ -19,6 +20,14 @@
     height: 700px;
     background: #FFFFFF;
     padding: 83px 0 0 90px;
+}
+
+@media (max-width: 1200px) {
+    .filters {
+        padding-top: 150px;
+        width: 100%;
+        display: none;
+    }
 }
 
 .filters h2 {
@@ -61,6 +70,7 @@
 
 .price-inputs {
     margin-top: 25px;
+    width: 70%;
 }
 
 .type-options {
@@ -103,7 +113,7 @@
 }
 
 .inputMinPrice, .inputMaxPrice {
-    width: 400px;
+    width: 65%;
     height: 2px;
     position: absolute;
     -webkit-appearance: none;
@@ -204,6 +214,12 @@
     transform-origin: top left;
 }
 
+@media (max-width: 1200px) {
+    .line {
+        display: none;
+    }
+}
+
 .catalog-content {
     position: absolute;
     left: 558px;
@@ -211,10 +227,27 @@
     width: 1260px;
 }
 
+@media (max-width: 1200px) {
+    .catalog-content {
+        left: 0px;
+        width: 100%;
+    }
+}
+
 .cars-grid {
     display: grid;
     grid-template-columns: repeat(2, 581.54px);
     gap: 97px 96.92px;
+}
+
+
+
+@media (max-width: 800px) {
+    .cars-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 350px);
+        margin: 100px;
+    }
 }
 
 .car-card {
@@ -272,6 +305,13 @@
     color: #000000;
 }
 
+@media (max-width: 900px) {
+    .car-info p {
+        width: 50%;
+        font-size: 15px;
+    }
+}
+
 .car-info .price {
     position: absolute;
     width: 119.54px;
@@ -287,11 +327,16 @@
     text-align: right;
 }
 
+.center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+
 #filter-search-btn {
     width: 400px;
     height: 60px;
-    margin: 90px auto;
-    display: block;
     background-color: #000000;
     color: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -517,4 +562,21 @@
 
 .more-btn:hover {
     transform: scale(1.05);
+}
+
+.filter-btn {
+    display: inline-block;
+    width: 210px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
 }

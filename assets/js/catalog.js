@@ -285,3 +285,5 @@ let componentToHex = (val) => {
     const a = val.toString(16);
     return a.length === 1 ? "0" + a : a;
 };
+
+

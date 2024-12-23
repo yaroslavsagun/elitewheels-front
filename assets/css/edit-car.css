@@ -394,7 +394,7 @@
     transform: scale(1.2);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .car-form {
         display: flex;
         flex-direction: column;

@@ -29,15 +29,15 @@
           <a href="#" class="search-btn" id="headerSearchBtn">
             <img src="assets/img/search.png" alt="Search" />
           </a>
-          <a href="#" class="rent-now-btn" id="headerRentNowBtn" style="background-color: #000000; color: #ffffff;">Rent  now</a>
+          <a class="filter-btn" id="filtersShow" onclick="menuClick()" style="background-color: #000000; color: #ffffff;">Show filters</a>
           <a href="#" class="account-btn" id="headerAccountBtn">
           </a>
         </div>
       </div>
     </header>
 
-    <div class="catalog">
-      <aside class="filters">
+    <div class="catalog" >
+      <aside class="filters" id="filterMenu">
         <h2>Filters</h2>
         <div class="filter-group make">
           <h3>Make</h3>
@@ -74,7 +74,9 @@
             <button style="background-color: #084712;"></button>
           </div>
         </div>
-        <button id="filter-search-btn" class="search-btn">Search</button>
+        <div class="center-wrapper">
+          <button id="filter-search-btn" class="search-btn">Search</button>
+        </div>
       </aside>
 
       <div class="line"></div>
@@ -122,8 +124,13 @@
     </footer>
 
   </div>
+
+
+
   <script type="module" src="assets/js/script.js"></script>
+  <script src="assets/js/mobile.js"></script>
   <script type="module" src="assets/js/catalog.js"></script>
+
 </body>
 
 </html>
