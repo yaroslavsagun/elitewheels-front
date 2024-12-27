@@ -1,0 +1,255 @@
+body, html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header .navigation a,
+.header .rent-now-btn {
+    color: #000000;
+}
+
+.header .rent-now-btn {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.item-content {
+    padding-top: 150px;
+    display: flex;
+    flex-grow: 1;
+}
+
+.item-content .container {
+    max-width: 1740px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.item-header {
+    display: grid;
+    grid-template-areas: 
+    "info special"
+    "image special";
+    grid-template-columns: 1fr max-content ;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: space-between;
+}
+
+.item-info {
+    grid-area: 'info';
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item-info h1 {
+    font-family: 'Castoro Titling', serif;
+    font-size: 35px;
+    font-weight: 400;
+    color: #512730;
+    margin-left: 8px;
+}
+
+.item-info .item-price {
+    font-family: 'Nunito', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: #512730;
+}
+
+.item-info .item-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 100px;
+    font-weight: 400;
+    color: #512730;
+    line-height: 100px;
+}
+
+.item-specs {
+    grid-area: 'special';
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.spec {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.spec h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.spec p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.item-image {
+    grid-area: 'image';
+    width: 100%;
+    height: min-content;
+    max-width: 1011px;
+    margin: 50px auto 50px;
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+}
+
+.item-image:hover {
+    transform: scale(1.05);
+}
+
+.item-image img {
+    max-height: 512px;
+}
+
+.gallery-title, .about-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.item-gallery {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 60px;
+}
+
+.item-gallery img {
+    width: calc(25% - 15px);
+    height: auto;
+    border-radius: 30px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.item-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.item-description {
+    width: 100%;
+}
+
+.item-description p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    line-height: 33px;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.contact-description {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    line-height: 33px;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.contact-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 30px;
+}
+
+table {
+    border-spacing: 10px;
+}
+
+.footer {
+    margin-top: 125px;
+}
+
+@media (max-width: 1440px) {
+    .item-info .item-brand {
+        font-size: 80px;
+        line-height: 108px;
+    }
+
+    .spec h3 {
+        font-size: 28px;
+    }
+
+    .spec p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .item-header {
+        flex-direction: column;
+    }
+
+    .item-specs {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 30px;
+    }
+
+    .spec {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .item-gallery {
+        flex-wrap: wrap;
+    }
+
+    .item-gallery img {
+        width: calc(50% - 10px);
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .item-info .item-brand {
+        font-size: 60px;
+        line-height: 81px;
+    }
+
+    .item-specs {
+        flex-wrap: wrap;
+    }
+
+    .spec {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+
+    .item-gallery img {
+        width: 100%;
+    }
+}

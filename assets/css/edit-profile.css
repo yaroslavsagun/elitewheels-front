@@ -1,0 +1,145 @@
+.logo .logo-black .account-btn .exit-btn {
+    display: inline;
+}
+
+.exit-btn {
+    padding: 5px;
+}
+
+.exit-btn img {
+    width: 40px;
+    height: 40px;
+}
+
+.header.scrolled .rent-now-btn {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.edit-profile {
+    display: flex;
+    min-height: calc(100vh - 150px);
+    margin-top: 150px;
+}
+
+.profile-sidebar {
+    width: 493px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 165px 0;
+    margin-left: 180px;
+}
+
+.profile-photo {
+    width: 510px;
+    height: 510px;
+    border-radius: 50%;
+    background: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.profile-content {
+    flex: 1;
+    padding: 210px 100px;
+}
+
+.edit-profile-form {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.edit-profile-form input {
+    width: 100%;
+    height: 60px;
+    background: #FAFAFA;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    border: none;
+    padding: 0 30px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.edit-profile-form input::placeholder {
+    color: #656565;
+}
+
+.edit-profile-form button {
+    width: 250px;
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.edit-profile-form .my-cars-btn {
+    background: #c2c2c2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+}
+
+.edit-profile-form .save-changes-btn {
+    background: #636363;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+}
+
+.edit-profile-form button:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 1440px) {
+    .profile-content {
+        padding: 150px 50px;
+    }
+    
+    .edit-profile-form {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .edit-profile {
+        flex-direction: column;
+    }
+    
+    .profile-sidebar {
+        width: 100%;
+        padding: 80px 0;
+        margin-left: 0;
+        justify-content: center;
+    }
+    
+    .profile-photo {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .profile-content {
+        padding: 80px 30px;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .edit-profile-form button {
+        width: 100%;
+    }
+}

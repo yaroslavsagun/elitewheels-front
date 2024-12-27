@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cars - Elite Wheels</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/user-cars.css">
+    <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+              <nav>
+                <a href="#" class="logo" id="headerLogo">
+                  <img src="assets/img/logo_dark.png" alt="Elite Wheels Logo" class="logo-black" id="logoBlack" style="display: flex;">
+                </a>
+                <ul class="navigation">
+                  <li><a href="#" id="navMakes" style="color: #000000;">Makes</a></li>
+                  <li><a href="#" id="navTypes" style="color: #000000;">Types</a></li>
+                </ul>
+              </nav>
+              <div class="header-actions">
+                <a href="#" class="search-btn" id="headerSearchBtn">
+                  <img src="assets/img/search.png" alt="Search" />
+                </a>
+                <a href="#" class="rent-now-btn" id="headerRentNowBtn" style="background-color: #000000; color: #ffffff;">Rent now</a>
+                <a href="#" class="account-btn" id="headerAccountBtn">
+                  <img src="assets/img/profile_photo.png" alt="Account" class="account-black" id="accountBlack" style="display: flex;">
+                </a>
+              </div>
+            </div>
+        </header>
+
+        <main class="user-cars">
+            <div class="user-header">
+                <h1 class="page-title">My cars</h1>
+                <button class="add-car-btn">+</button>
+            </div>
+            
+            <div class="car-list">
+                <!--
+                <div class="car-item">
+                    <img src="assets/img/mercedes_trending.png" alt="Mercedes-Benz" class="car-image">
+                    <div class="car-info">
+                        <div class="car-details">
+                            <span class="car-brand">Mercedes-Benz</span>
+                            <span class="car-model">AMG SL 63, SUV, 2022</span>
+                        </div>
+                        <div class="car-actions">
+                            <button class="edit-btn" aria-label="Edit car">
+                                <img src="assets/img/edit.png" alt="Edit car">
+                            </button>
+                            <button class="delete-btn" aria-label="Delete car">
+                                <img src="assets/img/delete.png" alt="Delete car">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-item">
+                    <img src="assets/img/bentley_trending.png" alt="Bentley" class="car-image">
+                    <div class="car-info">
+                        <div class="car-details">
+                            <span class="car-brand">Bentley</span>
+                            <span class="car-model">Continental GTC, Convertible, 2024</span>
+                        </div>
+                        <div class="car-actions">
+                            <button class="edit-btn" aria-label="Edit car">
+                                <img src="assets/img/edit.png" alt="Edit car">
+                            </button>
+                            <button class="delete-btn" aria-label="Delete car">
+                                <img src="assets/img/delete.png" alt="Delete car">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-item">
+                    <img src="assets/img/ferrari_trending.png" alt="Ferrari" class="car-image">
+                    <div class="car-info">
+                        <div class="car-details">
+                            <span class="car-brand">Ferrari</span>
+                            <span class="car-model">Enzo, Sports, 2017</span>
+                        </div>
+                        <div class="car-actions">
+                            <button class="edit-btn" aria-label="Edit car">
+                                <img src="assets/img/edit.png" alt="Edit car">
+                            </button>
+                            <button class="delete-btn" aria-label="Delete car">
+                                <img src="assets/img/delete.png" alt="Delete car">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-item">
+                    <img src="assets/img/porsche_trending.png" alt="Porsche" class="car-image">
+                    <div class="car-info">
+                        <div class="car-details">
+                            <span class="car-brand">Porsche</span>
+                            <span class="car-model">997 Turbo, Convertible, 2009</span>
+                        </div>
+                        <div class="car-actions">
+                            <button class="edit-btn" aria-label="Edit car">
+                                <img src="assets/img/edit.png" alt="Edit car">
+                            </button>
+                            <button class="delete-btn" aria-label="Delete car">
+                                <img src="assets/img/delete.png" alt="Delete car">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-item">
+                    <img src="assets/img/porsche2_trending.png" alt="Porsche" class="car-image">
+                    <div class="car-info">
+                        <div class="car-details">
+                            <span class="car-brand">Porsche</span>
+                            <span class="car-model">718 Cayman S, Convertible, 2005</span>
+                        </div>
+                        <div class="car-actions">
+                            <button class="edit-btn" aria-label="Edit car">
+                                <img src="assets/img/edit.png" alt="Edit car">
+                            </button>
+                            <button class="delete-btn" aria-label="Delete car">
+                                <img src="assets/img/delete.png" alt="Delete car">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-item">
+                    <img src="assets/img/bentley2_trending.png" alt="Bentley" class="car-image">
+                    <div class="car-info">
+                        <div class="car-details">
+                            <span class="car-brand">Bentley</span>
+                            <span class="car-model">Continental GT V8, Convertible, 2022</span>
+                        </div>
+                        <div class="car-actions">
+                            <button class="edit-btn" aria-label="Edit car">
+                                <img src="assets/img/edit.png" alt="Edit car">
+                            </button>
+                            <button class="delete-btn" aria-label="Delete car">
+                                <img src="assets/img/delete.png" alt="Delete car">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-item">
+                    <img src="assets/img/porsche3_trending.png" alt="Porsche" class="car-image">
+                    <div class="car-info">
+                        <div class="car-details">
+                            <span class="car-brand">Porsche</span>
+                            <span class="car-model">992 Stinger GTR, Sports, 2018</span>
+                        </div>
+                        <div class="car-actions">
+                            <button class="edit-btn" aria-label="Edit car">
+                                <img src="assets/img/edit.png" alt="Edit car">
+                            </button>
+                            <button class="delete-btn" aria-label="Delete car">
+                                <img src="assets/img/delete.png" alt="Delete car">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-item">
+                    <img src="assets/img/mercedes2_trending.png" alt="Mercedes-Maybach" class="car-image">
+                    <div class="car-info">
+                        <div class="car-details">
+                            <span class="car-brand">Mercedes-Maybach</span>
+                            <span class="car-model">S680 V12, Supercar, 2022</span>
+                        </div>
+                        <div class="car-actions">
+                            <button class="edit-btn" aria-label="Edit car">
+                                <img src="assets/img/edit.png" alt="Edit car">
+                            </button>
+                            <button class="delete-btn" aria-label="Delete car">
+                                <img src="assets/img/delete.png" alt="Delete car">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="contacts">
+                        <h3>Contacts</h3>
+                        <div class="contact-item" id="contactPhone">
+                            <img src="assets/img/phone_icon.png" alt="Phone">
+                            <p>+380 (00) 000 00 00</p>
+                        </div>
+                        <div class="contact-item" id="contactEmail">
+                            <img src="assets/img/mail_icon.png" alt="Email">
+                            <p>elitewheels@gmail.com</p>
+                        </div>
+                        <div class="contact-item" id="contactAddress">
+                            <img src="assets/img/address_icon.png" alt="Address">
+                            <p>address</p>
+                        </div>
+                        <div class="social-icons">
+                            <a href="#" id="socialInstagram"><img src="assets/img/instagram.png" alt="Instagram"></a>
+                            <a href="#" id="socialFacebook"><img src="assets/img/facebook.png" alt="Facebook"></a>
+                            <a href="#" id="socialMessenger"><img src="assets/img/messenger.png" alt="Messenger"></a>
+                            <a href="#" id="socialYouTube"><img src="assets/img/youtube.png" alt="YouTube"></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Get in touch with us</h3>
+                        <form id="footerContactForm">
+                            <input type="text" name="name" placeholder="Name" required id="contactName">
+                            <input type="email" name="email" placeholder="Email" required id="contactEmail">
+                            <input type="tel" name="phone" placeholder="Phone number" required id="contactPhone">
+                            <button type="submit" id="contactSubmit">Send</button>
+                        </form>
+                    </div>
+                </div>
+                <p class="copyright">© 2024 EliteWheels company. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script type='module' src="assets/js/script.js"></script>
+    <script type='module' src="assets/js/mycars.js"></script>
+</body>
+</html> 

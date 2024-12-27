@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Car - Elite Wheels</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/edit-car.css">
+    <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <nav>
+                    <a href="#" class="logo" id="headerLogo">
+                        <img src="assets/img/logo_dark.png" alt="Elite Wheels Logo" class="logo-black" id="logoBlack"
+                            style="display: flex;">
+                    </a>
+                    <ul class="navigation">
+                        <li><a href="#" id="navMakes" style="color: #000000;">Makes</a></li>
+                        <li><a href="#" id="navTypes" style="color: #000000;">Types</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="#" class="search-btn" id="headerSearchBtn">
+                        <img src="assets/img/search.png" alt="Search" />
+                    </a>
+                    <a href="#" class="rent-now-btn" id="headerRentNowBtn"
+                        style="background-color: #000000; color: #ffffff;">Rent now</a>
+                    <a href="#" class="account-btn" id="headerAccountBtn">
+                        <img src="assets/img/profile_photo.png" alt="Account" class="account-black" id="accountBlack"
+                            style="display: flex;">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="edit-car">
+            <div class="container">
+                <div class="car-form">
+                    <div class="left-section">
+                        <input type="file" id="mainPhoto" style="display: none;">
+                        <label for="mainPhoto" class="upload-label">
+                            <div class="main-photo">
+                                +
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="right-section">
+                        <div class="form-group">
+                            <label>Model</label>
+                            <input type="text" placeholder="LaFerrari" id="model-input">
+                        </div>
+
+                        <div class="form-group make">
+                            <label>Make</label>
+                            <div class="manufacturers-list">
+                                <!--
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="ferrari" value="Ferrari">
+                                    <label for="ferrari">Ferrari</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="porsche" value="Porsche">
+                                    <label for="porsche">Porsche</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="lamborghini" value="Lamborghini">
+                                    <label for="lamborghini">Lamborghini</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="bentley" value="Bentley">
+                                    <label for="bentley">Bentley</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="rolls-royce" value="Rolls-Royce">
+                                    <label for="rolls-royce">Rolls-Royce</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="mercedes" value="Mercedes-Benz">
+                                    <label for="mercedes">Mercedes-Benz</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="bmw" value="BMW">
+                                    <label for="bmw">BMW</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="audi" value="Audi">
+                                    <label for="audi">Audi</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="mclaren" value="McLaren">
+                                    <label for="mclaren">McLaren</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="make" id="aston-martin" value="Aston Martin">
+                                    <label for="aston-martin">Aston Martin</label>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+
+                        <div class="form-group type">
+                            <label>Type</label>
+                            <div class="type-elements">
+                                <!--
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="sports" value="sports">
+                                    <label for="sports">Sports</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="suv" value="suv">
+                                    <label for="suv">SUV</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="supercar" value="supercar">
+                                    <label for="supercar">Supercar</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="convertible" value="convertible">
+                                    <label for="convertible">Convertible</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="sedan" value="sedan">
+                                    <label for="sedan">Sedan</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="ev" value="ev">
+                                    <label for="ev">EV</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="chauffeur" value="chauffeur">
+                                    <label for="chauffeur">Chauffeur</label>
+                                </div>
+                                <div class="manufacturer-item">
+                                    <input type="radio" name="type" id="ultra-luxury" value="ultra-luxury">
+                                    <label for="ultra-luxury">Ultra-Luxury</label>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" placeholder="1000$" id="price-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Color</label>
+                            <div class="color-options">
+                                <button class="white" data-color="#FFFFFF"></button>
+                                <button class="black" data-color="#000000"></button>
+                                <button class="red" data-color="#CD0000"></button>
+                                <button class="gray" data-color="#7A7A7A"></button>
+                                <button class="gold" data-color="#9D7800"></button>
+                                <button class="brown" data-color="#493129"></button>
+                                <button class="navy" data-color="#0D0847"></button>
+                                <button class="green" data-color="#084712"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h3>About</h3>
+                    <textarea placeholder="Tell us a little about the car ......" id="about-input"></textarea>
+                </div>
+
+                <div class="features-section">
+                    <h3>Add special features</h3>
+                    <div class="features-grid">
+                        <div class="feature-input">
+                            <label>Engine</label>
+                            <input type="text" placeholder="Characteristic" id="engine-input">
+                        </div>
+                        <div class="feature-input">
+                            <label>Time to 100km/h</label>
+                            <input type="text" placeholder="Characteristic" id="acceleration-input">
+                        </div>
+                        <div class="feature-input">
+                            <label>Max speed</label>
+                            <input type="text" placeholder="Characteristic" id="speed-input">
+                        </div>
+                        <div class="feature-input">
+                            <label>Max power</label>
+                            <input type="text" placeholder="Characteristic" id="power-input">
+                        </div>
+                        <div class="feature-input">
+                            <label>Power per liter</label>
+                            <input type="text" placeholder="Characteristic" id="power-liter-input">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="submit-btn">Add</button>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="contacts">
+                        <h3>Contacts</h3>
+                        <div class="contact-item" id="contactPhone">
+                            <img src="assets/img/phone_icon.png" alt="Phone">
+                            <p>+380 (00) 000 00 00</p>
+                        </div>
+                        <div class="contact-item" id="contactEmail">
+                            <img src="assets/img/mail_icon.png" alt="Email">
+                            <p>elitewheels@gmail.com</p>
+                        </div>
+                        <div class="contact-item" id="contactAddress">
+                            <img src="assets/img/address_icon.png" alt="Address">
+                            <p>address</p>
+                        </div>
+                        <div class="social-icons">
+                            <a href="#" id="socialInstagram"><img src="assets/img/instagram.png" alt="Instagram"></a>
+                            <a href="#" id="socialFacebook"><img src="assets/img/facebook.png" alt="Facebook"></a>
+                            <a href="#" id="socialMessenger"><img src="assets/img/messenger.png" alt="Messenger"></a>
+                            <a href="#" id="socialYouTube"><img src="assets/img/youtube.png" alt="YouTube"></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Get in touch with us</h3>
+                        <form id="footerContactForm">
+                            <input type="text" name="name" placeholder="Name" required id="contactName">
+                            <input type="email" name="email" placeholder="Email" required id="contactEmail">
+                            <input type="tel" name="phone" placeholder="Phone number" required id="contactPhone">
+                            <button type="submit" id="contactSubmit">Send</button>
+                        </form>
+                    </div>
+                </div>
+                <p class="copyright">© 2024 EliteWheels company. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script type='module' src="assets/js/script.js"></script>
+    <script type='module' src="assets/js/edit_car.js"></script>
+</body>
+
+</html>

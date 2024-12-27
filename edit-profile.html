@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile - Elite Wheels</title>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/edit-profile.css">
+  <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="container">
+        <nav>
+          <a href="#" class="logo" id="headerLogo">
+            <img src="assets/img/logo_dark.png" alt="Elite Wheels Logo" class="logo-black" id="logoBlack"
+              style="display: flex;">
+          </a>
+          <ul class="navigation">
+            <li><a href="#" id="navMakes" style="color: #000000;">Makes</a></li>
+            <li><a href="#" id="navTypes" style="color: #000000;">Types</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="#" class="search-btn" id="headerSearchBtn">
+            <img src="assets/img/search.png" alt="Search" />
+          </a>
+          <a href="#" class="rent-now-btn" id="headerRentNowBtn" style="background-color: #000000; color: #ffffff;">Rent
+            now</a>
+          <a href="#" class="account-btn" id="headerAccountBtn">
+          </a>
+          <a href="#" class="exit-btn" id="exitBtn">
+            <img src="assets/img/exit.png" alt="Exit">
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="edit-profile">
+      <div class="profile-sidebar">
+      </div>
+
+      <div class="profile-content">
+        <form class="edit-profile-form" id="editProfileForm">
+          <input type="text" placeholder="" id="fullNameInput">
+          <input type="email" placeholder="" id="emailInput">
+          <input type="tel" placeholder="" id="phoneInput">
+          <input type="password" placeholder="" id="passwordInput">
+          <div class="button-container">
+            <button type="submit" class="save-changes-btn" id="saveChangesBtn">Save changes</button>
+            
+            <button type="button" class="my-cars-btn" id="myCarsBtn">My cars</button>
+          </div>
+        </form>
+
+      </div>
+    </main>
+  </div>
+  <script type="module" src="assets/js/script.js"></script>
+  <script type="module" src="assets/js/profile.js"></script>
+</body>
+
+</html>

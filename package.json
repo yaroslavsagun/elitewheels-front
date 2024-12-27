@@ -1,0 +1,20 @@
+{
+  "name": "programming_labs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "serve": "nodemon index.js",
+    "start": "node index"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "abc",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.4"
+  }
+}

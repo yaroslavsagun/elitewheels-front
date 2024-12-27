@@ -1,0 +1,103 @@
+.header .navigation a,
+.header .rent-now-btn {
+    color: #000000;
+}
+
+.logo {
+    visibility: visible;
+}
+
+.header .rent-now-btn {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.item-content {
+    padding-top: 250px;
+    position: relative;
+}
+
+.item-name {
+    font-family: 'Castoro Titling', serif;
+    font-size: 75px;
+    font-weight: 400;
+    color: #512730;
+    text-align: center;
+    margin-bottom: 90px;
+    position: relative;
+    z-index: 1;
+}
+
+.item-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 250px;
+    font-weight: 400;
+    color: #512730;
+    text-align: center;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.item-image {
+    width: 100%;
+    max-width: 1482px;
+    margin: -100px auto 0;
+    position: relative;
+    z-index: 2;
+}
+
+.item-image img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.item-image:hover img {
+    transform: scale(1.05);
+}
+
+.item-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.rent-now-btn-color, .details-btn {
+    display: inline-block;
+    width: 300px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.rent-now-btn-color {
+    background-color: #512730;
+    color: #FFFFFF !important;
+}
+
+.details-btn {
+    background-color: #FFFFFF;
+    color: #4F4F4F;
+    border: 1px solid #D3D3D3;
+}
+
+.rent-now-btn-color:hover, .details-btn:hover {
+    transform: scale(1.05);
+}
+
+.rent-now-btn-color:hover {
+    color: #FFFFFF;
+}
