@@ -58,8 +58,6 @@ signupForm.addEventListener('submit', async function (e) {
     let result = await createUser(fullName, email, phone, password);
     if (result) {
         location.href = '/';
-    } else {
-        return;
     }
 });
 

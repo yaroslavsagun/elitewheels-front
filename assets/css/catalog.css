@@ -564,6 +564,8 @@
     transform: scale(1.05);
 }
 
+
+
 .filter-btn {
     display: inline-block;
     width: 210px;
@@ -579,4 +581,13 @@
     text-decoration: none;
     padding: 15px;
     transition: transform 0.3s ease-in-out;
+}
+
+@media (min-width: 1200px) {
+    .filter-btn {
+        display: none !important;
+    }
+    .filters {
+        display: block !important;
+    }
 }

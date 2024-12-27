@@ -79,8 +79,8 @@ async function getCar() {
 }
 
 async function updateCar(id, data) {
-    const res = await fetch(api_link + `/cars/${id}`, {
-        method: 'PUT',
+    const res = await fetch(api_link + `/cars/${id}?_method=PUT`, {
+        method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token'),
             'Content-Type': 'application/json',
@@ -93,11 +93,10 @@ async function updateCar(id, data) {
 
 async function updateImage(id) {
     console.log(formData.get('main_image'));
-    const res = await fetch(api_link + `/cars/${id}`, {
-        method: 'PUT',
+    const res = await fetch(api_link + `/cars/${id}?_method=PUT`, {
+        method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token'),
-            'Content-Type': 'image/png',
             'Accept': 'application/json'
         },
         body: formData
@@ -137,6 +136,8 @@ function gatherData() {
         main_image: null
     }
     
+    console.log(data);
+
     return data;
 }
 
@@ -185,12 +186,14 @@ function fillCarInfo(car) {
     power_field.value = car.max_power;
     power_liter_field.value = car.power_per_liter;
 
-    imageInput.innerHTML =
+    if (car.main_image != null) {
+        imageInput.innerHTML =
                     `<label for="main_image" class="upload-label">
-                        <img src="${car.main_image != null ? img_link+car.main_image.path : "assets/img/blank_car.png"}" 
+                        <img src="${car.main_image.path}" 
                         alt="Car Image" class="center">
                     </label>
                     <input type="file" id="main_image" style="display: none;">`;
+    }
 
     let picked_color = document.querySelector(`[data-color="#${car.color.toUpperCase()}"]`);
     picked_color.classList.toggle('selected');

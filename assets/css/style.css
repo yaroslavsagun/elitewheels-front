@@ -30,6 +30,10 @@ body {
     max-width: 1728px;
 }
 
+.header.nottrans {
+    background-color: #ffffff;
+}
+
 .header {
     position: fixed;
     padding: 30px;
@@ -106,6 +110,10 @@ body {
     margin-right: 45px;
 }
 
+.search-btn {
+    display: none;
+}
+
 .search-btn, .account-btn {
     background: none;
     border: none;
@@ -118,6 +126,7 @@ body {
 }
 
 .account-btn img {
+    border-radius: 100%;
     width: 63px;
     height: 63px;
 }
@@ -696,10 +705,11 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
+/*
 @media (max-width: 900px) {
     width: 130px;
     height: 45px;
-}
+}*/
 
 .contact-form button:hover {
     transform: scale(1.05);

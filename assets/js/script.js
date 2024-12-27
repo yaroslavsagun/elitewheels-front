@@ -16,7 +16,7 @@ async function getUser() {
     const res = await fetch(api_link + `/user`, {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer '+ localStorage.getItem('token'),
+            'Authorization': 'Bearer ' + localStorage.getItem('token'),
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
@@ -51,9 +51,15 @@ function changeAvatar() {
 
 
 document.addEventListener('DOMContentLoaded', async function () {
-    await getUser();
-    changeAvatar();
-    
+    if (header) {
+        await getUser();
+        changeAvatar();
+    }
+    if (!logoWhite) {
+        logoBlack.classList.remove('logo-black');
+        header.classList.add('nottrans');
+    }
+
     const seeMoreBtn = document.querySelector('.see-more-btn');
     const rentNowBtn = document.querySelector('.rent-now-btn');
     const logoBtn = document.getElementById('headerLogo');
@@ -138,11 +144,10 @@ window.addEventListener("scroll", () => {
     if (scrollPosition > 100 && !header.classList.contains("scrolled")) {
         isAnimating = true;
         header.style.transform = "translateY(-100%)";
-        
+
         setTimeout(() => {
             header.classList.add("scrolled");
             header.style.transform = "translateY(0)";
-            searchBtn.style.display = "block";
             if (logoWhite) {
                 logoWhite.style.display = "none";
                 logoBlack.style.display = "inline";
@@ -179,10 +184,13 @@ window.addEventListener("scroll", () => {
         }, 200);
     }
 
-    if (scrollPosition + windowHeight > documentHeight - 100) {
-        footer.classList.toggle('scrolled', (scrollPosition % 200 < 100));
-    } else {
-        footer.classList.remove('scrolled');
+
+    if (footer) {
+        if (scrollPosition + windowHeight > documentHeight - 100) {
+            footer.classList.toggle('scrolled', (scrollPosition % 200 < 100));
+        } else {
+            footer.classList.remove('scrolled');
+        }
     }
 
     lastScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
